@@ -4,6 +4,7 @@
 .container {
     background: color(bar);
     height: $topbar-height;
+    // min-height: $topbar-height;
     width: 100%;
     box-shadow: 12px 3px 16px #00000024;
 }

@@ -1,21 +1,19 @@
 @import "../vars";
+@import "../scheme";
 
-app-sidebar {
+app-topbar {
   position: fixed;
   top: 0;
-  left: 0;
+  left: $sidebar-width;
+  width: 100%;
 }
 
 .container {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: $topbar-height;
   left: $sidebar-width;
-  padding-top: $topbar-height;
-
-  app-topbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
+  width: calc(100% - #{$sidebar-width} - 6rem);
+  height: calc(100% - #{$topbar-height} - 5rem);
+  overflow-y: auto;
+  padding: 2.5rem 3rem;
 }
