@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { TagComponent } from './components/tag/tag.component';
+import { TrendingComponent } from './trending/trending.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TagComponent } from './components/tag/tag.component';
     TopbarComponent,
     ContextMenuComponent,
     TagComponent,
+    TrendingComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class ContextMenuComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     document.addEventListener("mousedown", e => {
       e.preventDefault();
       const menu = <HTMLElement>(
