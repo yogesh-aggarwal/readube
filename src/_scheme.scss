@@ -1,0 +1,25 @@
+$colors: (
+  heading: #333333,
+  primary-green: #178e5a,
+  thumb: #178e5a,
+  card-date: #6A6A6A,
+  read-time: #5B5B5B,
+  icon: #303030,
+  bar: #F2F2F2
+);
+
+$gradients: (
+  story: linear-gradient(#70fead, #6efec4),
+  thumbnail: linear-gradient(#874cff, #a850ff),
+  tag: linear-gradient(#3eacf9, #4488fd),
+  on-rise: linear-gradient(#ff76ca, #ff8099),
+  profile: linear-gradient(#60a7ff, #1eb3ff)
+);
+
+@function color($_color) {
+  @return map-get($map: $colors, $key: $_color);
+}
+
+@function gradient($_gradient) {
+  @return map-get($map: $gradients, $key: $_gradient);
+}

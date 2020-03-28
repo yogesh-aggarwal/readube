@@ -1,0 +1,21 @@
+@import "../vars";
+
+app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: $sidebar-width;
+  padding-top: $topbar-height;
+
+  app-topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+}

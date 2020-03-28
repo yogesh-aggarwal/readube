@@ -1,0 +1,9 @@
+@import "../../vars";
+@import "../../scheme";
+
+.container {
+  background: color(bar);
+  width: $sidebar-width;
+  height: 100vh;
+  box-shadow: 2px 3px 16px #00000024;
+}
