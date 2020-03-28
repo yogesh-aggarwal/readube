@@ -6,6 +6,8 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { TopbarComponent } from './topbar/topbar.component';
     HomeComponent,
     SidebarComponent,
     TopbarComponent,
+    ContextMenuComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,

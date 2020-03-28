@@ -10,52 +10,7 @@
         <div class="info">
           <div class="title">{{ card.title }}</div>
           <div class="time">{{ card.datePublished }}</div>
-          <div class="tag">
-            <div class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="19"
-                height="24"
-                viewBox="0 0 19 24"
-              >
-                <defs>
-                  <linearGradient
-                    id="linear-gradient"
-                    x1="0.5"
-                    x2="0.5"
-                    y2="1"
-                    gradientUnits="objectBoundingBox"
-                  >
-                    <stop offset="0" stop-color="#fff" />
-                    <stop offset="0" stop-color="#3cb9f7" />
-                    <stop offset="1" stop-color="#457dfe" />
-                    <stop offset="1" stop-color="gray" />
-                  </linearGradient>
-                </defs>
-                <circle
-                  id="Ellipse_2"
-                  data-name="Ellipse 2"
-                  cx="9.5"
-                  cy="9.5"
-                  r="9.5"
-                  transform="translate(0 2)"
-                  fill="url(#linear-gradient)"
-                />
-                <text
-                  id="_"
-                  data-name="#"
-                  transform="translate(4 16)"
-                  fill="#fff"
-                  font-size="15"
-                  font-family="BalooBhai-Regular, Baloo Bhai"
-                >
-                  <tspan x="0" y="0">#</tspan>
-                </text>
-              </svg>
-            </div>
-            {{ card.tags[0] }}
-          </div>
+          <tag class="tag" [tag]=card.tags[0]></tag>
           <div class="author">{{ card.credit.author.name }}</div>
           <div class="read-time">{{ card.readTime }}</div>
         </div>
@@ -73,52 +28,7 @@
         <div class="info">
           <div class="title">{{ card.title }}</div>
           <div class="time">{{ card.datePublished }}</div>
-          <div class="tag">
-            <div class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="19"
-                height="24"
-                viewBox="0 0 19 24"
-              >
-                <defs>
-                  <linearGradient
-                    id="linear-gradient"
-                    x1="0.5"
-                    x2="0.5"
-                    y2="1"
-                    gradientUnits="objectBoundingBox"
-                  >
-                    <stop offset="0" stop-color="#fff" />
-                    <stop offset="0" stop-color="#3cb9f7" />
-                    <stop offset="1" stop-color="#457dfe" />
-                    <stop offset="1" stop-color="gray" />
-                  </linearGradient>
-                </defs>
-                <circle
-                  id="Ellipse_2"
-                  data-name="Ellipse 2"
-                  cx="9.5"
-                  cy="9.5"
-                  r="9.5"
-                  transform="translate(0 2)"
-                  fill="url(#linear-gradient)"
-                />
-                <text
-                  id="_"
-                  data-name="#"
-                  transform="translate(4 16)"
-                  fill="#fff"
-                  font-size="15"
-                  font-family="BalooBhai-Regular, Baloo Bhai"
-                >
-                  <tspan x="0" y="0">#</tspan>
-                </text>
-              </svg>
-            </div>
-            {{ card.tags[0] }}
-          </div>
+          <tag class="tag" [tag]=card.tags[0]></tag>
           <div class="author">{{ card.credit.author.name }}</div>
           <div class="read-time">{{ card.readTime }}</div>
         </div>
