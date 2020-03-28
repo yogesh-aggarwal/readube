@@ -7,14 +7,14 @@ import { DataSyncService } from "../data-sync.service";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent extends DataSyncService implements OnInit {
-  nowTime: any
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.nowTime = Date.now()
-    this.getNewRavels()
-    this.getUserRecommendations()
+    this.getNewRavels();
+    this.getUserRecommendations();
+
+    this
   }
 }

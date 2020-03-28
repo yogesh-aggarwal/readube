@@ -25,11 +25,11 @@ export class DataSyncService extends ToolsService {
     } catch {}
   }
 
-  async getNewRavels() {
+  private async getHome(func, data, quantity = 3) {
     this.query(
-      `query { getNewRavels(args:{uid: "", quantity: 3}) {_id, title, thumbnail, tags, datePublished, readTime, credit {author}} }`,
+      `query { ${func}(args: {uid: "", quantity: ${quantity}}) {_id, title, thumbnail, tags, datePublished, readTime, credit {author}} }`,
       async req => {
-        const posts = JSON.parse(req.responseText)["data"]["getNewRavels"];
+        const posts = JSON.parse(req.responseText)["data"][func];
         var author;
         for (let postIndex in posts) {
           await this.query(
@@ -51,43 +51,26 @@ export class DataSyncService extends ToolsService {
             }
           );
         }
+        switch (data) {
+          case "newRavels":
+            this.newRavels = posts;
+            break;
+          case "userRecommendations":
+            this.userRecommendations = posts;
+            break;
 
-        this.newRavels = posts;
+          default:
+            break;
+        }
       }
     );
   }
 
-  async getUserRecommendations() {
-    this.query(
-      `query { getUserRecommendations(args:{uid: "", quantity: 3}) {_id, title, thumbnail, tags, datePublished, readTime, credit {author}} }`,
-      async req => {
-        const posts = JSON.parse(req.responseText)["data"][
-          "getUserRecommendations"
-        ];
-        var author;
-        for (let postIndex in posts) {
-          await this.query(
-            `query { getUser(args: {_id: "${posts[postIndex].credit.author}"}) {data {name, profileImg}} }`,
-            reqUser => {
-              //& Published date
-              posts[postIndex].datePublished = this.getCardDate(
-                posts[postIndex].datePublished
-              );
-              //& Updated date
-              posts[postIndex].dateUpdated = this.getCardDate(
-                posts[postIndex].dateUpdated
-              );
-              //& Author
-              author = JSON.parse(reqUser.responseText)["data"]["getUser"][
-                "data"
-              ];
-              posts[postIndex].credit.author = author;
-            }
-          );
-        }
+  async getNewRavels() {
+    return await this.getHome("getNewRavels", "newRavels");
+  }
 
-        this.userRecommendations = posts;
-      }
-    );
+  async getUserRecommendations() {
+    return await this.getHome("getUserRecommendations", "userRecommendations");
   }
 }
