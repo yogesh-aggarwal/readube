@@ -2,14 +2,14 @@
   <div class="section">
     <div class="heading">New ravels</div>
     <div class="cards">
-      <div class="card">
+      <div class="card" *ngFor="let card of newRavels">
         <div
           class="thumb"
-          style="background-image: url('https://i.kym-cdn.com/photos/images/facebook/001/454/329/828.jpg');"
+          [ngStyle]="{ 'background-image': 'url(' + card.thumbnail + ')' }"
         ></div>
         <div class="info">
-          <div class="title">Elon musk invented time machine</div>
-          <div class="time">41 minutes ago</div>
+          <div class="title">{{ card.title }}</div>
+          <div class="time">{{ card.datePublished }}</div>
           <div class="tag">
             <div class="icon">
               <svg
@@ -54,10 +54,10 @@
                 </text>
               </svg>
             </div>
-            Inovation
+            {{ card.tags[0] }}
           </div>
-          <div class="author">The Times of India</div>
-          <div class="read-time">21 min</div>
+          <div class="author">{{ card.credit.author.name }}</div>
+          <div class="read-time">{{ card.readTime }}</div>
         </div>
       </div>
     </div>
@@ -65,14 +65,14 @@
   <div class="section">
     <div class="heading">Recommended for you</div>
     <div class="cards">
-      <div class="card">
+      <div class="card" *ngFor="let card of userRecommendations">
         <div
           class="thumb"
-          style="background-image: url('https://i.kym-cdn.com/photos/images/facebook/001/454/329/828.jpg');"
+          [ngStyle]="{ 'background-image': 'url(' + card.thumbnail + ')' }"
         ></div>
         <div class="info">
-          <div class="title">Elon musk invented time machine</div>
-          <div class="time">41 minutes ago</div>
+          <div class="title">{{ card.title }}</div>
+          <div class="time">{{ card.datePublished }}</div>
           <div class="tag">
             <div class="icon">
               <svg
@@ -117,10 +117,10 @@
                 </text>
               </svg>
             </div>
-            Inovation
+            {{ card.tags[0] }}
           </div>
-          <div class="author">The Times of India</div>
-          <div class="read-time">21 min</div>
+          <div class="author">{{ card.credit.author.name }}</div>
+          <div class="read-time">{{ card.readTime }}</div>
         </div>
       </div>
     </div>
