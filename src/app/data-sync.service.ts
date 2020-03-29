@@ -28,21 +28,23 @@ export class DataSyncService extends ToolsService {
 
   private async postIdDataToObject(posts, _callback?) {
     var author;
-    for (let postIndex of posts) {
+    for (let postIndex in posts) {
       await this.query(
-        `query { getUser(args: {_id: "${postIndex.credit.author}"}) {data {name, profileImg}} }`,
+        `query { getUser(args: {_id: "${posts[postIndex].credit.author}"}) {data {name, profileImg}} }`,
         reqUser => {
           //& Published date
-          postIndex.datePublished = this.getCardDate(postIndex.datePublished);
+          posts[postIndex].datePublished = this.getCardDate(posts[postIndex].datePublished);
           //& Updated date
-          postIndex.dateUpdated = this.getCardDate(postIndex.dateUpdated);
+          posts[postIndex].dateUpdated = this.getCardDate(posts[postIndex].dateUpdated);
           //& Author
           author = JSON.parse(reqUser.responseText)["data"]["getUser"]["data"];
-          postIndex.credit.author = author;
+          posts[postIndex].credit.author = author;
         }
       );
-      if (_callback) _callback(posts);
-      return posts;
+      if (Number(postIndex) == posts.length - 1) {
+        if (_callback) _callback(posts);
+        return posts;
+      }
     }
   }
 
@@ -111,13 +113,17 @@ export class DataSyncService extends ToolsService {
           await this.query(
             `query { getFeaturedUser(args:{_id:"${res["featuredCreators"][creator]}"}) {_id, data {name, profileImg, posts {featuredPosts}}} }`,
             async r => {
-              let fCreator = JSON.parse(r.responseText)["data"]["getFeaturedUser"];
+              let fCreator = JSON.parse(r.responseText)["data"][
+                "getFeaturedUser"
+              ];
               let posts = [];
               for (let post of fCreator["data"]["posts"]["featuredPosts"]) {
                 await this.query(
                   ` query { getPost(args: { _id: "${post}" }) { _id, title, thumbnail, tags } } `,
                   post => {
-                    posts.push(JSON.parse(post.responseText)["data"]["getPost"]);
+                    posts.push(
+                      JSON.parse(post.responseText)["data"]["getPost"]
+                    );
                   }
                 );
               }
