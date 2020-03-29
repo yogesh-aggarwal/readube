@@ -1,0 +1,63 @@
+@import "../../../scheme";
+@import "../../../vars";
+
+.card {
+  width: 21rem;
+  min-width: 21rem;
+  height: 20rem;
+  margin-bottom: 2rem;
+  margin-right: 2.5rem;
+  position: relative;
+  box-shadow: 0 2px 5px #ccc; // TODO: Change it from XD
+  border-radius: 12px;
+
+  .thumb {
+    width: 100%;
+    height: $post-card-thumb-height;
+    background-position: center;
+    background-size: cover;
+    border-radius: inherit;
+  }
+  .info {
+    position: relative;
+    padding: 10px 1rem;
+    height: calc(100% - #{$post-card-thumb-height} - 1rem);
+
+    .title {
+      color: color(card-title);
+      font-size: 20px;
+      line-height: 1.5rem;
+      cursor: pointer;
+    }
+
+    .time {
+      position: absolute;
+      bottom: 2.6rem;
+      left: 15px;
+      font-size: 15px;
+      color: color(card-time);
+    }
+
+    .tag {
+      position: absolute;
+      bottom: 2.6rem;
+      right: 15px;
+    }
+
+    .author {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      font-size: 15px;
+      color: color(primary-green);
+      cursor: pointer;
+    }
+    .read-time {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 15px;
+      color: color(card-read-time);
+    }
+  }
+}

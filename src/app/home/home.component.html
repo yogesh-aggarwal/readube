@@ -2,37 +2,14 @@
   <div class="section">
     <div class="heading">New ravels</div>
     <div class="cards">
-      <div class="card" *ngFor="let card of newRavels">
-        <div
-          class="thumb"
-          [ngStyle]="{ 'background-image': 'url(' + card.thumbnail + ')' }"
-        ></div>
-        <div class="info">
-          <div class="title">{{ card.title }}</div>
-          <div class="time">{{ card.datePublished }}</div>
-          <tag class="tag" [tag]=card.tags[0]></tag>
-          <div class="author">{{ card.credit.author.name }}</div>
-          <div class="read-time">{{ card.readTime }}</div>
-        </div>
-      </div>
+      <author-card *ngFor="let card of newRavels" [card]="card"></author-card>
     </div>
   </div>
   <div class="section">
     <div class="heading">Recommended for you</div>
     <div class="cards">
-      <div class="card" *ngFor="let card of userRecommendations">
-        <div
-          class="thumb"
-          [ngStyle]="{ 'background-image': 'url(' + card.thumbnail + ')' }"
-        ></div>
-        <div class="info">
-          <div class="title">{{ card.title }}</div>
-          <div class="time">{{ card.datePublished }}</div>
-          <tag class="tag" [tag]=card.tags[0]></tag>
-          <div class="author">{{ card.credit.author.name }}</div>
-          <div class="read-time">{{ card.readTime }}</div>
-        </div>
-      </div>
+      <author-card *ngFor="let card of userRecommendations" [card]="card">
+      </author-card>
     </div>
   </div>
 </div>

@@ -9,6 +9,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { TagComponent } from './components/tag/tag.component';
 import { TrendingComponent } from './trending/trending.component';
+import { AuthorCardComponent } from './components/author-card/author-card.component';
+import { PublicationCardComponent } from './components/publication-card/publication-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { TrendingComponent } from './trending/trending.component';
     ContextMenuComponent,
     TagComponent,
     TrendingComponent,
+    AuthorCardComponent,
+    PublicationCardComponent,
   ],
   imports: [
     BrowserModule,

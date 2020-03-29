@@ -1,0 +1,18 @@
+@import "../components/author-card/author-cards.component";
+
+.container {
+  .section {
+    margin-bottom: 1rem;
+    .heading {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+    .tags {
+      position: relative;
+
+      tag {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

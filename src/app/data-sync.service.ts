@@ -7,6 +7,7 @@ import { ToolsService } from "./tools.service";
 export class DataSyncService extends ToolsService {
   newRavels: any;
   userRecommendations: any;
+  trending;
 
   constructor() {
     super();
@@ -25,43 +26,46 @@ export class DataSyncService extends ToolsService {
     } catch {}
   }
 
+  private async postIdDataToObject(posts, _callback?) {
+    var author;
+    for (let postIndex of posts) {
+      await this.query(
+        `query { getUser(args: {_id: "${postIndex.credit.author}"}) {data {name, profileImg}} }`,
+        reqUser => {
+          //& Published date
+          postIndex.datePublished = this.getCardDate(postIndex.datePublished);
+          //& Updated date
+          postIndex.dateUpdated = this.getCardDate(postIndex.dateUpdated);
+          //& Author
+          author = JSON.parse(reqUser.responseText)["data"]["getUser"]["data"];
+          postIndex.credit.author = author;
+        }
+      );
+      if (_callback) _callback(posts);
+      return posts;
+    }
+  }
+
   private async getHome(func, data, quantity = 3) {
     this.query(
       `query { ${func}(args: {uid: "", quantity: ${quantity}}) {_id, title, thumbnail, tags, datePublished, readTime, credit {author}} }`,
-      async req => {
-        const posts = JSON.parse(req.responseText)["data"][func];
-        var author;
-        for (let postIndex in posts) {
-          await this.query(
-            `query { getUser(args: {_id: "${posts[postIndex].credit.author}"}) {data {name, profileImg}} }`,
-            reqUser => {
-              //& Published date
-              posts[postIndex].datePublished = this.getCardDate(
-                posts[postIndex].datePublished
-              );
-              //& Updated date
-              posts[postIndex].dateUpdated = this.getCardDate(
-                posts[postIndex].dateUpdated
-              );
-              //& Author
-              author = JSON.parse(reqUser.responseText)["data"]["getUser"][
-                "data"
-              ];
-              posts[postIndex].credit.author = author;
-            }
-          );
-        }
-        switch (data) {
-          case "newRavels":
-            this.newRavels = posts;
-            break;
-          case "userRecommendations":
-            this.userRecommendations = posts;
-            break;
+      req => {
+        this.postIdDataToObject(
+          JSON.parse(req.responseText)["data"][func],
+          r => {
+            switch (data) {
+              case "newRavels":
+                this.newRavels = r;
+                break;
+              case "userRecommendations":
+                this.userRecommendations = r;
+                break;
 
-          default:
-            break;
-        }
+              default:
+                break;
+            }
+          }
+        );
       }
     );
   }
@@ -72,5 +76,39 @@ export class DataSyncService extends ToolsService {
 
   async getUserRecommendations() {
     return await this.getHome("getUserRecommendations", "userRecommendations");
+  }
+
+  async getTrending() {
+    this.query(
+      `query { getTrending {tags, featured {topics, posts}, featuredCreators, date} }`,
+      async req => {
+        const res = JSON.parse(req.responseText)["data"]["getTrending"];
+
+        const categoryPosts = res["featured"]["posts"];
+
+        let final = [];
+        for (let categoryPost of categoryPosts) {
+          let finalCategoryPost = [];
+          for (let post of categoryPost) {
+            await this.query(
+              `query { getPost(args: { _id: "${post}" } ) { _id, title, thumbnail, tags, datePublished, readTime, credit {author} } }`,
+              res => {
+                this.postIdDataToObject(
+                  [JSON.parse(res.responseText)["data"]["getPost"]],
+                  r => {
+                    finalCategoryPost.push(r[0]);
+                  }
+                );
+              }
+            );
+          }
+          final.push(finalCategoryPost);
+        }
+        res["featured"]["posts"] = final;
+        this.trending = res;
+        console.log();
+        console.log(this.trending);
+      }
+    );
   }
 }
