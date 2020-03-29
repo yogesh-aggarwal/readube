@@ -105,8 +105,21 @@ export class DataSyncService extends ToolsService {
           final.push(finalCategoryPost);
         }
         res["featured"]["posts"] = final;
+
+        let creators = [];
+        for (let creator of res["featuredCreators"]) {
+          await this.query(
+            `query { getFeaturedUser(args:{_id:"${creator}"}) {_id, data {name, profileImg, posts {featuredPosts}}} }`,
+            res => {
+              creators.push(
+                JSON.parse(res.responseText)["data"]["getFeaturedUser"]
+              );
+              console.log(creators);
+            }
+          );
+        }
+        res["featuredCreators"] = creators;
         this.trending = res;
-        console.log();
         console.log(this.trending);
       }
     );
