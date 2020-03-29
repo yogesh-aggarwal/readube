@@ -11,6 +11,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { TrendingComponent } from './trending/trending.component';
 import { AuthorCardComponent } from './components/author-card/author-card.component';
 import { PublicationCardComponent } from './components/publication-card/publication-card.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PublicationCardComponent } from './components/publication-card/publicat
     TrendingComponent,
     AuthorCardComponent,
     PublicationCardComponent,
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,

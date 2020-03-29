@@ -1,4 +1,4 @@
-@import "../components/author-card/author-cards.component";
+@import "../../scheme";
 
 .container {
   .section {
@@ -12,6 +12,79 @@
 
       tag {
         margin-right: 1rem;
+      }
+    }
+    .creator {
+      background: gradient(on-rise);
+      padding: 1rem 1.5rem .5rem 1.5rem;
+      border-radius: 1rem;
+      display: flex;
+      z-index: -10;
+
+      .profile {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0.6rem;
+
+        .profileImg {
+          height: 12rem;
+          width: 12rem;
+          border-radius: 10rem;
+          background-size: cover;
+          background-position: center;
+        }
+        .name {
+          color: #fff;
+          font-size: 1.3rem;
+          margin-top: 0.5rem;
+        }
+      }
+      .cards {
+        display: flex;
+
+        .card {
+          width: 25rem;
+          height: 14rem;
+          margin: 0 1rem;
+          position: relative;
+          transition: all .3s;
+          cursor: pointer;
+          
+          .thumbnail {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+            transition: all .3s;
+          }
+          
+          .info {
+            opacity: 0;
+            pointer-events: all;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            display: flex;
+            transition: all .3s;
+            
+            .title {
+              color: #fff;
+              font-size: 1.2rem;
+            }
+          }
+
+          &:hover {
+            .info {
+              opacity: 1;
+            }
+            .thumbnail {
+              filter: brightness(35%);
+            }
+          }
+        }
       }
     }
   }

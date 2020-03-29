@@ -107,20 +107,32 @@ export class DataSyncService extends ToolsService {
         res["featured"]["posts"] = final;
 
         let creators = [];
-        for (let creator of res["featuredCreators"]) {
+        for (let creator in res["featuredCreators"]) {
           await this.query(
-            `query { getFeaturedUser(args:{_id:"${creator}"}) {_id, data {name, profileImg, posts {featuredPosts}}} }`,
-            res => {
-              creators.push(
-                JSON.parse(res.responseText)["data"]["getFeaturedUser"]
-              );
-              console.log(creators);
+            `query { getFeaturedUser(args:{_id:"${res["featuredCreators"][creator]}"}) {_id, data {name, profileImg, posts {featuredPosts}}} }`,
+            async r => {
+              let fCreator = JSON.parse(r.responseText)["data"]["getFeaturedUser"];
+              let posts = [];
+              for (let post of fCreator["data"]["posts"]["featuredPosts"]) {
+                await this.query(
+                  ` query { getPost(args: { _id: "${post}" }) { _id, title, thumbnail, tags } } `,
+                  post => {
+                    posts.push(JSON.parse(post.responseText)["data"]["getPost"]);
+                  }
+                );
+              }
+              fCreator["data"]["posts"]["featuredPosts"] = posts;
+
+              creators.push(fCreator);
+
+              if (Number(creator) == creator.length - 1) {
+                res["featuredCreators"] = creators;
+                this.trending = res;
+                console.log(this.trending);
+              }
             }
           );
         }
-        res["featuredCreators"] = creators;
-        this.trending = res;
-        console.log(this.trending);
       }
     );
   }
