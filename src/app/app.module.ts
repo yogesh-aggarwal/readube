@@ -12,6 +12,7 @@ import { TrendingComponent } from './trending/trending.component';
 import { AuthorCardComponent } from './components/author-card/author-card.component';
 import { PublicationCardComponent } from './components/publication-card/publication-card.component';
 import { ExploreComponent } from './explore/explore.component';
+import { RavelComponent } from './ravel/ravel.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ExploreComponent } from './explore/explore.component';
     AuthorCardComponent,
     PublicationCardComponent,
     ExploreComponent,
+    RavelComponent,
   ],
   imports: [
     BrowserModule,
