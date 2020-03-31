@@ -1,1 +1,11 @@
-<p>publication-card works!</p>
+<div class="card">
+  <div
+    class="thumb"
+    [ngStyle]="{ 'background-image': 'url(' + card.featuredImg + ')' }"
+  ></div>
+  <div class="info">
+    <div class="title">{{ card.name }}</div>
+    <div class="author">{{ card.followers }} followers</div>
+    <div class="read-time">{{ card.members }} members</div>
+  </div>
+</div>

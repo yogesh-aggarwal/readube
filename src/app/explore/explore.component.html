@@ -1,1 +1,51 @@
-<p>explore works!</p>
+<div class="container" *ngIf="explore">
+  <div class="section">
+    <div class="heading">New Tags</div>
+    <div class="tags">
+      <tag [tag]="tag" *ngFor="let tag of explore.tags"></tag>
+    </div>
+  </div>
+  <div class="section">
+    <div class="heading">Publications</div>
+    <div
+      class="cards"
+      id="publication"
+      *ngFor="let publication of explore.publications"
+    >
+      <publication-card [card]="publication"></publication-card>
+    </div>
+  </div>
+  <div class="section">
+    <div class="heading">Our Authors</div>
+    <div class="cards" id="creators">
+      <div class="author" *ngFor="let creator of explore.creators">
+        <div class="profile">
+          <div
+            class="cover"
+            [ngStyle]="{
+              'background-image': 'url(' + creator.coverImg + ')'
+            }"
+          >
+            <div
+              class="main"
+              [ngStyle]="{
+                'background-image': 'url(' + creator.profileImg + ')'
+              }"
+            ></div>
+          </div>
+        </div>
+        <div class="name">{{ creator.name }}</div>
+        <div class="followers">{{ creator.followers }} followers</div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="heading">New ravels</div>
+    <div class="cards">
+      <author-card
+        [card]="post"
+        *ngFor="let post of explore.posts"
+      ></author-card>
+    </div>
+  </div>
+</div>

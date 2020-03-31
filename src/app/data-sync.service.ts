@@ -7,7 +7,8 @@ import { ToolsService } from "./tools.service";
 export class DataSyncService extends ToolsService {
   newRavels: any;
   userRecommendations: any;
-  trending;
+  trending: any;
+  explore: any;
 
   constructor() {
     super();
@@ -33,9 +34,13 @@ export class DataSyncService extends ToolsService {
         `query { getUser(args: {_id: "${posts[postIndex].credit.author}"}) {data {name, profileImg}} }`,
         reqUser => {
           //& Published date
-          posts[postIndex].datePublished = this.getCardDate(posts[postIndex].datePublished);
+          posts[postIndex].datePublished = this.getCardDate(
+            posts[postIndex].datePublished
+          );
           //& Updated date
-          posts[postIndex].dateUpdated = this.getCardDate(posts[postIndex].dateUpdated);
+          posts[postIndex].dateUpdated = this.getCardDate(
+            posts[postIndex].dateUpdated
+          );
           //& Author
           author = JSON.parse(reqUser.responseText)["data"]["getUser"]["data"];
           posts[postIndex].credit.author = author;
@@ -139,6 +144,69 @@ export class DataSyncService extends ToolsService {
             }
           );
         }
+      }
+    );
+  }
+
+  async getExplore() {
+    this.query(
+      `query { getExplore { tags, publications, creators, posts } }`,
+      async req => {
+        const data = JSON.parse(req.responseText)["data"]["getExplore"];
+
+        //& Getting posts
+        let posts = [];
+        for (let post of data.posts) {
+          await this.query(
+            `query { getPost(args: { _id: "${post}" }) {_id, title, thumbnail, tags, datePublished, readTime, credit {author}} }`,
+            async r => {
+              post = JSON.parse(r.responseText)["data"]["getPost"];
+              await this.postIdDataToObject([post], post => {
+                posts.push(post[0]);
+              });
+            }
+          );
+        }
+        data["posts"] = posts;
+
+        //& Getting publications
+        let publications = [];
+        for (let publication of data.publications) {
+          await this.query(
+            `query { getPublication(args: { _id: "${publication}" }) { _id, name, followers, members, featuredImg } }`,
+            r => {
+              publication = JSON.parse(r.responseText)["data"][
+                "getPublication"
+              ];
+              publication["followers"] = publication["followers"].length;
+              publication["members"] = publication["members"].length;
+              publications.push(publication);
+            }
+          );
+        }
+        data["publications"] = publications;
+
+        //& Getting creators
+        let creators = [];
+        for (let creator of data.creators) {
+          await this.query(
+            `query { getUser(args: { _id: "${creator}" }) { _id, data { name, followers, profileImg, coverImg } } }`,
+            r => {
+              creator = JSON.parse(r.responseText)["data"]["getUser"];
+              creators.push({
+                _id: creator._id,
+                name: creator["data"]["name"],
+                followers: creator["data"]["followers"].length,
+                profileImg: creator["data"]["profileImg"],
+                coverImg: creator["data"]["coverImg"],
+              });
+            }
+          );
+        }
+        data["creators"] = creators;
+
+        this.explore = data;
+        console.log(data);
       }
     );
   }
