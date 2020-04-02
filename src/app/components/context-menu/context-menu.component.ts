@@ -30,6 +30,10 @@ export class ContextMenuComponent implements OnInit {
           !(mouseY > top && mouseY < top + height)
         ) {
           menu.style.opacity = "0";
+          setTimeout(() => {
+            menu.style.top = "0";
+            menu.style.left = "0";
+          }, 100);
         }
       }
     });

@@ -10,8 +10,8 @@ app-topbar {
 
 context-menu {
   position: fixed;
-  top: 40rem;
-  left: 50rem;
+  top: 0;
+  left: 0;
   z-index: 100000;
   opacity: 0;
   transition: opacity .1s;
