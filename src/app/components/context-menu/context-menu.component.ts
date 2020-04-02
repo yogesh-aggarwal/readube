@@ -32,7 +32,7 @@ export class ContextMenuComponent implements OnInit {
           menu.style.opacity = "0";
           setTimeout(() => {
             menu.style.top = "0";
-            menu.style.left = "0";
+            menu.style.left = "-20000rem";
           }, 100);
         }
       }
