@@ -5,7 +5,7 @@
   ></div>
   <div class="info">
     <div class="title">{{ card.title }}</div>
-    <div class="time">{{ card.dateUpdated }}</div>
+    <div class="time">{{ getCardDate(card.dateUpdated) }}</div>
     <tag class="tag" [tag]="card.tags[0]"></tag>
     <div class="author">{{ card.credit.author.data.name }}</div>
     <div class="read-time">{{ card.readTime }}</div>

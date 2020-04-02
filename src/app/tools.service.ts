@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -12,5 +11,12 @@ export class ToolsService {
     return `${date.getUTCDate()} ${date.toLocaleString("default", {
       month: "short"
     })}, ${date.getUTCFullYear()}`;
+  }
+
+  parsePosts(posts) {
+    posts.forEach(post => {
+      post.dateUpdated = this.getCardDate(post.dateUpdated);
+    });
+    return posts;
   }
 }

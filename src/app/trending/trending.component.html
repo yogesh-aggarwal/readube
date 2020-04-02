@@ -6,14 +6,11 @@
         <tag *ngFor="let tag of trending.tags" [tag]="tag"></tag>
       </div>
     </div>
-    <div
-      class="section"
-      *ngFor="let category of trending.featured.topics; let i = index"
-    >
-      <div class="heading">{{ category }}</div>
+    <div class="section" *ngFor="let category of trending.categories">
+      <div class="heading">{{ category.name }}</div>
       <div class="cards">
         <author-card
-          *ngFor="let card of trending.featured.posts[i]"
+          *ngFor="let card of category.posts"
           [card]="card"
         ></author-card>
       </div>
@@ -26,17 +23,15 @@
             class="profileImg"
             [ngStyle]="{
               'background-image':
-                'url(' + trending.featuredCreators[0].data.profileImg + ')'
+                'url(' + trending.creators[0].data.profileImg + ')'
             }"
           ></div>
-          <div class="name">{{ trending.featuredCreators[0].data.name }}</div>
+          <div class="name">{{ trending.creators[0].data.name }}</div>
         </div>
         <div class="cards">
           <div
             class="card"
-            *ngFor="
-              let card of trending.featuredCreators[0].data.posts.featuredPosts
-            "
+            *ngFor="let card of trending.creators[0].data.posts.featuredPosts"
           >
             <div
               class="thumbnail"

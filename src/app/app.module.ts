@@ -15,9 +15,6 @@ import { ExploreComponent } from "./explore/explore.component";
 import { RavelComponent } from "./ravel/ravel.component";
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
-import { ApolloModule, APOLLO_OPTIONS } from "apollo-angular";
-import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
 
 @NgModule({
   declarations: [
@@ -37,24 +34,9 @@ import { InMemoryCache } from "apollo-cache-inmemory";
     BrowserModule,
     AppRoutingModule,
     GraphQLModule,
-    ApolloModule,
-    HttpLinkModule,
     HttpClientModule
   ],
-  providers: [
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink) => {
-        return {
-          cache: new InMemoryCache(),
-          link: httpLink.create({
-            uri: "http:localhost"
-          })
-        };
-      },
-      deps: [HttpLink]
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

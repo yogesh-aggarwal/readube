@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataSyncService } from "../data-sync.service";
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
 
 @Component({
   selector: "app-explore",
@@ -7,8 +9,64 @@ import { DataSyncService } from "../data-sync.service";
   styleUrls: ["./explore.component.scss"]
 })
 export class ExploreComponent extends DataSyncService implements OnInit {
-  constructor() {
+  explore: any;
+
+  constructor(private apollo: Apollo) {
     super();
+  }
+
+  getExplore() {
+    this.apollo
+      .watchQuery({
+        query: gql`
+          {
+            getExplore {
+              tags
+              publications {
+                name
+                followers {
+                  _id
+                }
+                members {
+                  _id
+                }
+                featuredImg
+              }
+              creators {
+                _id
+                data {
+                  name
+                  followers {
+                    _id
+                  }
+                  profileImg
+                  coverImg
+                }
+              }
+              posts {
+                _id
+                title
+                thumbnail
+                readTime
+                dateUpdated
+                tags
+                credit {
+                  author {
+                    _id
+                    data {
+                      name
+                      profileImg
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `
+      })
+      .valueChanges.subscribe(({ loading, data }) => {
+        this.explore = data["getExplore"];
+      });
   }
 
   ngOnInit(): void {
