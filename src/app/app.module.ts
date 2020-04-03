@@ -12,9 +12,15 @@ import { TrendingComponent } from "./trending/trending.component";
 import { AuthorCardComponent } from "./components/author-card/author-card.component";
 import { PublicationCardComponent } from "./components/publication-card/publication-card.component";
 import { ExploreComponent } from "./explore/explore.component";
-import { RavelComponent } from "./ravel/ravel.component";
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
+import { CollectionComponent } from "./author/collection/collection.component";
+import { CommunityComponent } from "./author/community/community.component";
+import { InfoComponent } from "./author/info/info.component";
+import { RavelComponent } from "./author/ravel/ravel.component";
+import { MerchandiseComponent } from "./author/merchandise/merchandise.component";
+import { StoryComponent } from "./author/story/story.component";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -27,15 +33,16 @@ import { HttpClientModule } from "@angular/common/http";
     TrendingComponent,
     AuthorCardComponent,
     PublicationCardComponent,
+    CollectionComponent,
+    CommunityComponent,
+    InfoComponent,
+    MerchandiseComponent,
+    StoryComponent,
+    RavelComponent,
     ExploreComponent,
     RavelComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GraphQLModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

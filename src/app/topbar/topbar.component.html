@@ -1,7 +1,8 @@
-<div class="container">
-  <div
-    class="profile"
-    [ngStyle]="{ 'background-image': 'url(' + profile.data.profileImg + ')' }"
-    *ngIf="profile"
-  ></div>
+<div class="container" *ngIf="profile">
+  <a [routerLink]="['/author', profile._id]"
+    ><div
+      class="profile"
+      [ngStyle]="{ 'background-image': 'url(' + profile.data.profileImg + ')' }"
+    ></div
+  ></a>
 </div>
