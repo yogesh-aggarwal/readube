@@ -2,8 +2,20 @@
 @import "../../scheme";
 
 .container {
-    background: color(bar);
-    width: 100%;
-    height: $topbar-height;    
-    box-shadow: 12px 3px 16px #00000024;
+  background: color(bar);
+  width: 100%;
+  height: $topbar-height;
+  box-shadow: 12px 3px 16px #00000024;
+  position: relative;
+
+  .profile {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    border-radius: 5rem;
+    width: 3rem;
+    height: 3rem;
+    background-position: center;
+    background-size: cover;
+  }
 }

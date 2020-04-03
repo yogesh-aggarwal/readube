@@ -5,7 +5,7 @@ app-topbar {
   position: fixed;
   top: 0;
   left: $sidebar-width;
-  width: 100%;
+  width: calc(100% - #{$sidebar-width});
 }
 
 context-menu {
@@ -14,7 +14,7 @@ context-menu {
   left: -2000rem;
   z-index: 100000;
   opacity: 0;
-  transition: opacity .1s;
+  transition: opacity 0.1s;
 }
 
 .container {

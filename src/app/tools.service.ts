@@ -4,7 +4,10 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class ToolsService {
-  constructor() {}
+  currentUser: any;
+  constructor() {
+    this.getCurrentUserId();
+  }
 
   getCardDate(timestamp) {
     let date = new Date(Number(timestamp));
@@ -18,5 +21,9 @@ export class ToolsService {
       post.dateUpdated = this.getCardDate(post.dateUpdated);
     });
     return posts;
+  }
+
+  getCurrentUserId() {
+    this.currentUser = "5e8476a0d955be31f8ffeb05";
   }
 }

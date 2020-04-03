@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { DataSyncService } from "../data-sync.service";
 
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
+import { ToolsService } from '../tools.service';
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent extends DataSyncService implements OnInit {
+export class HomeComponent extends ToolsService implements OnInit {
   newRavels: any;
   userRecommendations: any;
 

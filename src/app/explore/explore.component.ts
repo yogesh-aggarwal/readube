@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { DataSyncService } from "../data-sync.service";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
+import { ToolsService } from '../tools.service';
 
 @Component({
   selector: "app-explore",
   templateUrl: "./explore.component.html",
   styleUrls: ["./explore.component.scss"]
 })
-export class ExploreComponent extends DataSyncService implements OnInit {
+export class ExploreComponent extends ToolsService implements OnInit {
   explore: any;
 
   constructor(private apollo: Apollo) {
