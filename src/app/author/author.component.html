@@ -1,1 +1,35 @@
-<p>author works!</p>
+<div class="container">
+  <author-info></author-info>
+
+  <div class="routes">
+    <a [routerLink]="['/author', uid]" [ngClass]="{ active: routes.ravel }"
+      >Ravel</a
+    >
+    <a
+      [routerLink]="['/author', uid, 'collections']"
+      [ngClass]="{ active: routes.collection }"
+      >Collections</a
+    >
+    <a
+      [routerLink]="['/author', uid, 'community']"
+      [ngClass]="{ active: routes.community }"
+      >Community</a
+    >
+    <a
+      [routerLink]="['/author', uid, 'stories']"
+      [ngClass]="{ active: routes.story }"
+      >Stories</a
+    >
+    <a
+      [routerLink]="['/author', uid, 'merchandises']"
+      [ngClass]="{ active: routes.merchandise }"
+      >Merchandise</a
+    >
+  </div>
+
+  <author-ravel *ngIf="routes.ravel"></author-ravel>
+  <author-collection *ngIf="routes.collection"></author-collection>
+  <author-community *ngIf="routes.community"></author-community>
+  <author-story *ngIf="routes.story"></author-story>
+  <author-merchandise *ngIf="routes.merchandise"></author-merchandise>
+</div>

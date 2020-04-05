@@ -16,20 +16,20 @@ const routes: Routes = [
   { path: "explore", component: ExploreComponent },
   // Component routes
   {
-    path: "author/:id",
-    component: AuthorComponent
-    // children: [
-    //   { path: ":id", component: RavelComponent },
-    //   { path: ":id/collections", component: CollectionComponent },
-    //   { path: ":id/community", component: CommunityComponent },
-    //   { path: ":id/stories", component: StoryComponent },
-    //   { path: ":id/merchandises", component: MerchandiseComponent }
-    // ]
-  }
+    path: "author",
+    component: AuthorComponent,
+    children: [
+      { path: ":id", component: AuthorComponent },
+      { path: ":id/collections", component: AuthorComponent },
+      { path: ":id/community", component: AuthorComponent },
+      { path: ":id/stories", component: AuthorComponent },
+      { path: ":id/merchandises", component: AuthorComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

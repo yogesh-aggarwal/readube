@@ -1,49 +1,52 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
+//& Root
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { TopbarComponent } from "./topbar/topbar.component";
+//& Components
 import { ContextMenuComponent } from "./components/context-menu/context-menu.component";
 import { TagComponent } from "./components/tag/tag.component";
-import { TrendingComponent } from "./trending/trending.component";
+import { TopbarComponent } from "./topbar/topbar.component";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+//& Elements
 import { AuthorCardComponent } from "./components/author-card/author-card.component";
 import { PublicationCardComponent } from "./components/publication-card/publication-card.component";
+//& Routes
+import { HomeComponent } from "./home/home.component";
+import { TrendingComponent } from "./trending/trending.component";
 import { ExploreComponent } from "./explore/explore.component";
+//& GraphQL
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
-import { CollectionComponent } from "./author/collection/collection.component";
-import { CommunityComponent } from "./author/community/community.component";
-import { InfoComponent } from "./author/info/info.component";
-import { RavelComponent } from "./author/ravel/ravel.component";
-import { MerchandiseComponent } from "./author/merchandise/merchandise.component";
-import { StoryComponent } from "./author/story/story.component";
-import { environment } from "../environments/environment";
+import { AuthorComponent } from "./author/author.component";
+import { AuthorModule } from "./author/author.module";
+import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
   declarations: [
     AppComponent,
+    //& Routes
     HomeComponent,
-    SidebarComponent,
-    TopbarComponent,
-    ContextMenuComponent,
-    TagComponent,
     TrendingComponent,
-    AuthorCardComponent,
-    PublicationCardComponent,
-    CollectionComponent,
-    CommunityComponent,
-    InfoComponent,
-    MerchandiseComponent,
-    StoryComponent,
-    RavelComponent,
     ExploreComponent,
-    RavelComponent
+    //& Components
+    TopbarComponent,
+    SidebarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule],
+  imports: [
+    //& Essential Modules
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    GraphQLModule,
+    HttpClientModule,
+    //& Modules,
+    AuthorModule,
+    ComponentsModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
