@@ -1,1 +1,85 @@
-<p>info works!</p>
+<!-- TODO: Change background to author cover -->
+<div
+  class="container"
+  *ngIf="profile; else loading"
+  [ngStyle]="{ 'background-image': 'url(' + profile.data.coverImg + ')' }"
+>
+  <div class="profile">
+    <div
+      class="profileImg"
+      [ngStyle]="{ 'background-image': 'url(' + profile.data.profileImg + ')' }"
+    ></div>
+    <div class="info">
+      <div class="name">{{ profile.data.name }}</div>
+      <div class="bio">{{ profile.data.bio }}</div>
+    </div>
+  </div>
+  <div class="other-info">
+    <div class="info">
+      <div class="stats">
+        <div class="public stats-category">
+          <div class="stat" *ngFor="let stat of profile.data.stats | keyvalue">
+            <div class="data">
+              <div class="count">{{ stat.value }}</div>
+              <div class="name">{{ stat.key | titlecase }}</div>
+            </div>
+            <div class="divider"></div>
+          </div>
+        </div>
+        <div class="internal stats-category">
+          <!-- Posts stats -->
+          <div class="stat">
+            <div class="data">
+              <div class="count">{{ profile.data.posts.posts.length }}</div>
+              <div class="name">Posts</div>
+            </div>
+            <div class="divider"></div>
+          </div>
+          <!-- Followers stats -->
+          <div class="stat">
+            <div class="data">
+              <div class="count">{{ profile.data.followers.length }}</div>
+              <div class="name">Followers</div>
+            </div>
+            <div class="divider"></div>
+          </div>
+          <!-- Following stats -->
+          <div class="stat">
+            <div class="data">
+              <div class="count">{{ profile.data.following.length }}</div>
+              <div class="name">Following</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="memberOf">
+        Member of
+        <div
+          class="member"
+          *ngFor="
+            let member of profile.data.memberOf.slice(0, pubShow);
+            let i = index
+          "
+        >
+          <a [routerLink]="['/publication', member._id]">
+            {{ member.name }}
+          </a>
+          <div class="comma" *ngIf="i < pubShow - 1">,</div>
+        </div>
+      </div>
+      <div class="social-links">
+        <div
+          class="link"
+          *ngFor="let link of profile.data.socialLinks | socialLink"
+        >
+          <a [href]="link.link" target="_blank">
+            <div
+              [ngStyle]="{ 'background-image': 'url(' + link.svg + ')' }"
+            ></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>Loading...</ng-template>

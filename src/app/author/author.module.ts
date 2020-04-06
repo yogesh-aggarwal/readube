@@ -9,6 +9,7 @@ import { CommunityComponent } from './community/community.component';
 import { MerchandiseComponent } from './merchandise/merchandise.component';
 import { StoryComponent } from './story/story.component';
 import { RouterModule } from "@angular/router";
+import { SocialLinkToolPipe } from './social-link-tool.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from "@angular/router";
     InfoComponent,
     MerchandiseComponent,
     RavelComponent,
-    StoryComponent
+    StoryComponent,
+    SocialLinkToolPipe
   ],
   imports: [
     CommonModule,

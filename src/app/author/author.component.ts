@@ -17,7 +17,7 @@ export class AuthorComponent implements OnInit {
   };
   uid: any;
 
-  constructor(private router: Router) {
+  constructor(router: Router) {
     router.events.subscribe((route) => {
       const routes = route;
       if (route["urlAfterRedirects"]) {
