@@ -1,1 +1,11 @@
-<p>ravel works!</p>
+<div class="container">
+  <div class="category" *ngFor="let category of categories">
+    <div class="heading">{{ category.name }}</div>
+    <div class="cards">
+      <author-card
+        [card]="post"
+        *ngFor="let post of category.posts"
+      ></author-card>
+    </div>
+  </div>
+</div>

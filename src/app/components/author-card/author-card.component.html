@@ -7,7 +7,7 @@
     <div class="title">{{ card.title }}</div>
     <div class="time">{{ getCardDate(card.dateUpdated) }}</div>
     <tag class="tag" [tag]="card.tags[0]"></tag>
-    <div class="author">{{ card.credit.author.data.name }}</div>
+    <div class="author" *ngIf="card.credit">{{ card.credit.author.data.name }}</div>
     <div class="read-time">{{ card.readTime }}</div>
   </div>
 </div>

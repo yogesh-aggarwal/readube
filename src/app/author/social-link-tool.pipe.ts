@@ -33,7 +33,6 @@ export class SocialLinkToolPipe implements PipeTransform {
           });
       }
     }
-    console.log(final);
     return final;
   }
 }

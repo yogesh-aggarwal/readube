@@ -27,9 +27,9 @@
     >
   </div>
 
-  <author-ravel *ngIf="routes.ravel"></author-ravel>
-  <author-collection *ngIf="routes.collection"></author-collection>
-  <author-community *ngIf="routes.community"></author-community>
-  <author-story *ngIf="routes.story"></author-story>
-  <author-merchandise *ngIf="routes.merchandise"></author-merchandise>
+  <author-ravel *ngIf="routes.ravel" [id]=uid></author-ravel>
+  <author-collection *ngIf="routes.collection" [id]=uid></author-collection>
+  <author-community *ngIf="routes.community" [id]=uid></author-community>
+  <author-story *ngIf="routes.story" [id]=uid></author-story>
+  <author-merchandise *ngIf="routes.merchandise" [id]=uid></author-merchandise>
 </div>
