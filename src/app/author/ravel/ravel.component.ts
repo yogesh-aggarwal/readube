@@ -12,6 +12,7 @@ import { Apollo } from "apollo-angular";
 export class RavelComponent implements OnInit {
   @Input()
   id: any;
+
   categories: any;
   constructor(private apollo: Apollo) {}
 

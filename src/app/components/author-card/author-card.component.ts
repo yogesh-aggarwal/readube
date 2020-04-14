@@ -8,7 +8,7 @@ import { ToolsService } from "src/app/tools.service";
 })
 export class AuthorCardComponent extends ToolsService implements OnInit {
   @Input()
-  card;
+  card: any;
 
   constructor() {
     super();

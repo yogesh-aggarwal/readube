@@ -4,6 +4,7 @@ import { AuthorCardComponent } from './author-card/author-card.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { PublicationCardComponent } from './publication-card/publication-card.component';
 import { TagComponent } from './tag/tag.component';
+import { StoryCardComponent } from './story-card/story-card.component';
 
 
 
@@ -12,13 +13,15 @@ import { TagComponent } from './tag/tag.component';
     AuthorCardComponent,
     ContextMenuComponent,
     PublicationCardComponent,
-    TagComponent
+    TagComponent,
+    StoryCardComponent
   ],
   exports: [
     AuthorCardComponent,
     ContextMenuComponent,
     PublicationCardComponent,
-    TagComponent
+    TagComponent,
+    StoryCardComponent
   ],
   imports: [
     CommonModule
