@@ -43,7 +43,6 @@ export class RavelComponent implements OnInit {
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.categories = data["getUser"]["data"]["posts"]["categories"];
-        console.log(this.categories);
       });
   }
 
