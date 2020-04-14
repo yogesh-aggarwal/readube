@@ -1,13 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { TrendingComponent } from "./trending/trending.component";
-import { ExploreComponent } from "./explore/explore.component";
-import { CollectionComponent } from "./author/collection/collection.component";
-import { CommunityComponent } from "./author/community/community.component";
-import { MerchandiseComponent } from "./author/merchandise/merchandise.component";
-import { StoryComponent } from "./author/story/story.component";
-import { AuthorComponent } from "./author/author.component";
+import { HomeComponent } from "./routes/home/home.component";
+import { TrendingComponent } from "./routes/trending/trending.component";
+import { ExploreComponent } from "./routes/explore/explore.component";
+import { AuthorComponent } from "./routes/author/author.component";
 
 const routes: Routes = [
   // Main routes

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
-import { ToolsService } from '../tools.service';
+import { ToolsService } from '../../tools.service';
 
 @Component({
   selector: "app-home",

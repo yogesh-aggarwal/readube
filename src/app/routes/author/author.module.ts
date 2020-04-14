@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RavelComponent } from './ravel/ravel.component';
 import { AuthorComponent } from './author.component';
-import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 import { InfoComponent } from './info/info.component';
 import { CollectionComponent } from './collection/collection.component';
 import { CommunityComponent } from './community/community.component';

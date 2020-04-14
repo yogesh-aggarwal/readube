@@ -6,16 +6,16 @@ import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 //& Components
-import { TopbarComponent } from "./topbar/topbar.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
+import { TopbarComponent } from "./components/topbar/topbar.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
 //& Routes
-import { HomeComponent } from "./home/home.component";
-import { TrendingComponent } from "./trending/trending.component";
-import { ExploreComponent } from "./explore/explore.component";
+import { HomeComponent } from "./routes/home/home.component";
+import { TrendingComponent } from "./routes/trending/trending.component";
+import { ExploreComponent } from "./routes/explore/explore.component";
 //& GraphQL
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
-import { AuthorModule } from "./author/author.module";
+import { AuthorModule } from "./routes/author/author.module";
 import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
