@@ -1,6 +1,21 @@
 <div class="container">
-  <div class="category" *ngFor="let category of categories">
-    <div class="heading">{{ category.name }}</div>
+  <div class="category" *ngFor="let category of categories; let i = index">
+    <div class="heading">
+      <div
+        class="text"
+        id="category-{{ i }}"
+        (keydown.enter)="save(i)"
+        (dblclick)="editCategoryName(i)"
+        (blur)="save(i)"
+      >
+        {{ category.name }}
+      </div>
+      <div
+        class="icon"
+        *ngIf="isLoggedinUser(id)"
+        (click)="editCategoryName(i)"
+      ></div>
+    </div>
     <div class="cards">
       <author-card
         [card]="post"

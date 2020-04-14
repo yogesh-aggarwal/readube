@@ -32,7 +32,7 @@
 
     .time {
       position: absolute;
-      bottom: 2.6rem;
+      bottom: 1rem;
       left: 15px;
       font-size: 15px;
       color: color(card-time);
@@ -40,13 +40,13 @@
 
     .tag {
       position: absolute;
-      bottom: 2.6rem;
+      bottom: 1rem;
       right: 15px;
     }
 
     .author {
       position: absolute;
-      bottom: 10px;
+      bottom: -0.7rem;
       left: 15px;
       font-size: 15px;
       color: color(primary-green);
@@ -54,7 +54,7 @@
     }
     .read-time {
       position: absolute;
-      bottom: 10px;
+      bottom: -0.7rem;
       right: 15px;
       font-size: 15px;
       color: color(card-read-time);

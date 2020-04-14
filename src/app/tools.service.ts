@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ToolsService {
   currentUser: any;
@@ -12,12 +12,12 @@ export class ToolsService {
   getCardDate(timestamp) {
     let date = new Date(Number(timestamp));
     return `${date.getUTCDate()} ${date.toLocaleString("default", {
-      month: "short"
+      month: "short",
     })}, ${date.getUTCFullYear()}`;
   }
 
   parsePosts(posts) {
-    posts.forEach(post => {
+    posts.forEach((post) => {
       post.dateUpdated = this.getCardDate(post.dateUpdated);
     });
     return posts;
@@ -25,5 +25,10 @@ export class ToolsService {
 
   getCurrentUserId() {
     this.currentUser = "5e8476a0d955be31f8ffeb05";
+    return this.currentUser;
+  }
+
+  isLoggedinUser(uid) {
+    return uid == this.getCurrentUserId();
   }
 }

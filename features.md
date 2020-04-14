@@ -15,4 +15,6 @@
 |-- Collection view
 
 # To be developed later
-|-- Community tab
+
+|-- Author -> Community tab
+|-- Author -> Merchandise tab
