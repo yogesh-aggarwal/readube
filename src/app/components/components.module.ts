@@ -22,6 +22,7 @@ import { NotificationsComponent } from "./notifications/notifications.component"
     PublicationCardComponent,
     TagComponent,
     StoryCardComponent,
+    NotificationsComponent,
   ],
   imports: [CommonModule],
 })

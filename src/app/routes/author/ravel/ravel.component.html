@@ -5,6 +5,7 @@
         class="text"
         id="category-{{ i }}"
         (keydown.enter)="save(i)"
+        (keydown.shift.Enter)="save(i)"
         (dblclick)="editCategoryName(i)"
         (blur)="save(i)"
         title="Change section name"
