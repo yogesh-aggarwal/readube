@@ -25,7 +25,7 @@
     height: $notifications-height;
     background: color(bar);
     bottom: (-$notifications-height);
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     opacity: 0;
     z-index: -10;
     box-shadow: 0 6px 13px #ccc;
