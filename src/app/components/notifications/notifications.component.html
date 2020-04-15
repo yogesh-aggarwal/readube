@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="icon" (click)="toggleNotifications()"></div>
+
+  <div class="notifications" [ngClass]="{ active: showNotifications }">
+    <div class="notification">
+      <div class="source"></div>
+      <div class="info">
+        <div class="title">The notification title</div>
+        <div class="time">2 min ago</div>
+      </div>
+    </div>
+  </div>
+</div>

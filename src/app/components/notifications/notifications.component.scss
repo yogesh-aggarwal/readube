@@ -1,0 +1,76 @@
+@import "../../../vars";
+@import "../../../scheme";
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 6rem;
+  position: relative;
+
+  .icon {
+    background-image: url(../../../assets/img/notifications.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  $notifications-height: 28rem;
+  .notifications {
+    position: absolute;
+    width: 24rem;
+    height: $notifications-height;
+    background: color(bar);
+    bottom: (-$notifications-height);
+    border-radius: 10px;
+    opacity: 0;
+    z-index: -10;
+    box-shadow: 0 6px 13px #ccc;
+    transition: all 20ms;
+    overflow-y: auto;
+
+    &.active {
+      z-index: 2;
+      opacity: 1;
+    }
+
+    .notification {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      cursor: pointer;
+      transition: all 30ms ease-in-out;
+
+      &:hover {
+        background: #ccc;
+      }
+
+      .source {
+        width: 3rem;
+        height: 3rem;
+        background-image: url(https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 5rem;
+      }
+
+      .info {
+        margin-left: 10px;
+
+        .title {
+          font-size: 1rem;
+        }
+        .time {
+          font-size: 0.9rem;
+          color: #414141;
+          line-height: 1rem;
+        }
+      }
+    }
+  }
+}
