@@ -16,20 +16,21 @@ interface ExploreQuery {
 }
 
 interface AuthorQuery {
-  collection: Function;
+  collections: Function;
   info: Function;
   user: Function;
   story: Function;
 }
 
 class AuthorQueryResolver {
-  static collection(id: string): DocumentNode {
+  static collections(id: string): DocumentNode {
     return gql`
       {
         getUser(args: { _id: "${id}" }) {
           _id
           data {
             collections {
+              _id
               title
               thumbnail
               dateUpdated
@@ -259,7 +260,7 @@ export class StaticDataService {
     `,
   };
   authorQuery: AuthorQuery = {
-    collection: AuthorQueryResolver.collection,
+    collections: AuthorQueryResolver.collections,
     info: AuthorQueryResolver.info,
     user: AuthorQueryResolver.user,
     story: AuthorQueryResolver.story,

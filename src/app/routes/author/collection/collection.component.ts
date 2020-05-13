@@ -20,14 +20,13 @@ export class CollectionComponent implements OnInit {
   getCollections() {
     this.apollo
       .watchQuery({
-        query: this.staticDataService.authorQuery.collection(this.id),
+        query: this.staticDataService.authorQuery.collections(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.collections = data["getUser"]["data"]["collections"];
         this.collections.forEach((collection: any) => {
-          collection.route = ["collection", collection.id];
+          collection.route = ["/collection", collection._id];
           collection.readTime = `${collection.posts.length} posts`;
-          delete collection.posts;
         });
       });
   }
