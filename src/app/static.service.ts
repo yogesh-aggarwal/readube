@@ -22,6 +22,36 @@ interface AuthorQuery {
   story: Function;
 }
 
+interface CollectionQuery {
+  collection: Function;
+}
+
+class Resolvers {
+  static collection(id: string) {
+    return gql`
+      query {
+        getCollection(args: { _id: "${id}" }) {
+          _id
+          title
+          description
+          thumbnail
+          tags
+          posts {
+            _id
+            title
+            thumbnail
+            readTime
+            dateUpdated
+            tags
+          }
+          dateCreated
+          dateUpdated
+        }
+      }
+    `;
+  }
+}
+
 class AuthorQueryResolver {
   static collections(id: string): DocumentNode {
     return gql`
@@ -264,5 +294,8 @@ export class StaticDataService {
     info: AuthorQueryResolver.info,
     user: AuthorQueryResolver.user,
     story: AuthorQueryResolver.story,
+  };
+  collection: CollectionQuery = {
+    collection: Resolvers.collection,
   };
 }
