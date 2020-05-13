@@ -3,7 +3,12 @@
     Ravel
   </div>
   <div class="menu">
-    <a [routerLink]="[ '/' ]" class="item active" id="home">
+    <a
+      [routerLink]="['/']"
+      class="item"
+      [ngClass]="{ active: routes.home }"
+      id="home"
+    >
       <div class="icon">
         <svg
           id="Group_4"
@@ -39,7 +44,12 @@
       </div>
       <div class="title">Home</div>
     </a>
-    <a [routerLink]="[ '/trending' ]" class="item" id="trending">
+    <a
+      [routerLink]="['/trending']"
+      class="item"
+      [ngClass]="{ active: routes.trending }"
+      id="trending"
+    >
       <div class="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +68,11 @@
       </div>
       <div class="title">Trending</div>
     </a>
-    <a [routerLink]="[ '/explore' ]" class="item">
+    <a
+      [routerLink]="['/explore']"
+      class="item"
+      [ngClass]="{ active: routes.explore }"
+    >
       <div class="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
