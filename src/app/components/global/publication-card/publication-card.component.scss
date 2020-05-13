@@ -1,9 +1,9 @@
 @import "../author-card/author-card.component.scss";
 
 .card {
-    height: 17rem;
+  height: 17rem;
 
-    .author {
-        @extend .read-time;
-    }
+  .author {
+    @extend .read-time;
+  }
 }
