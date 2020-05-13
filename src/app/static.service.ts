@@ -23,7 +23,7 @@ interface AuthorQuery {
 }
 
 class AuthorQueryResolver {
-  static collection(id: string) {
+  static collection(id: string): DocumentNode {
     return gql`
       {
         getUser(args: { _id: "${id}" }) {
@@ -43,7 +43,7 @@ class AuthorQueryResolver {
       }
     `;
   }
-  static info(id: string) {
+  static info(id: string): DocumentNode {
     return gql`
       {
         getUser(args: { _id: "${id}" }) { 
@@ -78,7 +78,7 @@ class AuthorQueryResolver {
       }
     `;
   }
-  static user(id: string) {
+  static user(id: string): DocumentNode {
     return gql`
       {
         getUser(args: { _id: "${id}" }) {
@@ -102,7 +102,7 @@ class AuthorQueryResolver {
       }
     `;
   }
-  static story(id: string) {
+  static story(id: string): DocumentNode {
     return gql`
       {
         getUser(args: { _id: "${id}" }) {

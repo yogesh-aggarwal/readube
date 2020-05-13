@@ -21,7 +21,7 @@ export class StoryComponent implements OnInit {
   getStories() {
     this.apollo
       .watchQuery({
-        query: this.staticDataService.authorQuery.user(this.id),
+        query: this.staticDataService.authorQuery.story(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.stories = data["getUser"]["data"]["stories"];
