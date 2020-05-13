@@ -1,0 +1,16 @@
+import { TestBed } from "@angular/core/testing";
+
+import { StaticDataService } from "./static.service";
+
+describe("StaticService", () => {
+  let service: StaticDataService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(StaticDataService);
+  });
+
+  it("should be created", () => {
+    expect(service).toBeTruthy();
+  });
+});

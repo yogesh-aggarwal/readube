@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { Component, OnInit, Input } from "@angular/core";
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "author-story",
@@ -12,28 +13,18 @@ export class StoryComponent implements OnInit {
   id: any;
 
   stories: any;
-  constructor(private apollo: Apollo) {}
+  constructor(
+    private apollo: Apollo,
+    private staticDataService: StaticDataService
+  ) {}
 
   getStories() {
     this.apollo
       .watchQuery({
-        query: gql`
-        {
-          getUser(args: { _id: "${this.id}" }) {
-            _id
-            data {
-              stories {
-                _id
-                content
-              }
-            }
-          }
-        }
-        `,
+        query: this.staticDataService.authorQuery.user(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.stories = data["getUser"]["data"]["stories"];
-
       });
   }
 

@@ -1,68 +1,27 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
-import { ToolsService } from '../../tools.service';
+import { ToolsService } from "../../tools.service";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "app-explore",
   templateUrl: "./explore.component.html",
-  styleUrls: ["./explore.component.scss"]
+  styleUrls: ["./explore.component.scss"],
 })
 export class ExploreComponent extends ToolsService implements OnInit {
   explore: any;
 
-  constructor(private apollo: Apollo) {
+  constructor(
+    private apollo: Apollo,
+    private staticDataService: StaticDataService
+  ) {
     super();
   }
 
   getExplore() {
     this.apollo
       .watchQuery({
-        query: gql`
-          {
-            getExplore {
-              tags
-              publications {
-                name
-                followers {
-                  _id
-                }
-                members {
-                  _id
-                }
-                featuredImg
-              }
-              creators {
-                _id
-                data {
-                  name
-                  followers {
-                    _id
-                  }
-                  profileImg
-                  coverImg
-                }
-              }
-              posts {
-                _id
-                title
-                thumbnail
-                readTime
-                dateUpdated
-                tags
-                credit {
-                  author {
-                    _id
-                    data {
-                      name
-                      profileImg
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `
+        query: this.staticDataService.exploreQuery.explore,
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.explore = data["getExplore"];

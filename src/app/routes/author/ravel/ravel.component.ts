@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
 import { ToolsService } from "src/app/tools.service";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "author-ravel",
@@ -17,7 +18,10 @@ export class RavelComponent extends ToolsService implements OnInit {
   categoryPreviousValue: string;
 
   categories: any;
-  constructor(private apollo: Apollo) {
+  constructor(
+    private apollo: Apollo,
+    private staticDataService: StaticDataService
+  ) {
     super();
   }
 
@@ -43,28 +47,7 @@ export class RavelComponent extends ToolsService implements OnInit {
   getCategories() {
     this.apollo
       .watchQuery({
-        query: gql`
-        {
-          getUser(args: { _id: "${this.id}" }) {
-            _id
-            data {
-              posts {
-                categories {
-                  name
-                  posts {
-                    _id
-                    title
-                    thumbnail
-                    readTime
-                    dateUpdated
-                    tags
-                  }
-                }
-              }
-            }
-          }
-        }
-        `,
+        query: this.staticDataService.authorQuery.user(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.categories = data["getUser"]["data"]["posts"]["categories"];

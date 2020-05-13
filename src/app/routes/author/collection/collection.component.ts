@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "author-collection",
@@ -12,33 +13,19 @@ export class CollectionComponent implements OnInit {
   id: any;
   collections: any;
 
-  constructor(private apollo: Apollo) {}
+  constructor(
+    private apollo: Apollo,
+    private staticDataService: StaticDataService
+  ) {}
 
   getCollections() {
     this.apollo
       .watchQuery({
-        query: gql`
-        {
-          getUser(args: { _id: "${this.id}" }) {
-            _id
-            data {
-              collections {
-                title
-                thumbnail
-                dateUpdated
-                tags
-                posts {
-                  _id
-                }
-              }
-            }
-          }
-        }
-        `,
+        query: this.staticDataService.authorQuery.collection(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.collections = data["getUser"]["data"]["collections"];
-        this.collections.forEach((collection) => {
+        this.collections.forEach((collection: any) => {
           collection.readTime = `${collection.posts.length} posts`;
           delete collection.posts;
         });

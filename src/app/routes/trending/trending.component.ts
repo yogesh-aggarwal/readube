@@ -1,65 +1,29 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
 import { ToolsService } from "../../tools.service";
+import { DataService } from "src/app/data.service";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "app-trending",
   templateUrl: "./trending.component.html",
-  styleUrls: ["./trending.component.scss"]
+  styleUrls: ["./trending.component.scss"],
 })
 export class TrendingComponent extends ToolsService implements OnInit {
   trending: any;
 
-  constructor(private apollo: Apollo) {
+  constructor(
+    private apollo: Apollo,
+    private dataService: DataService,
+    private staticDataService: StaticDataService
+  ) {
     super();
   }
 
   getTrending() {
     this.apollo
       .watchQuery({
-        query: gql`
-          {
-            getTrending {
-              _id
-              tags
-              categories {
-                name
-                posts {
-                  _id
-                  title
-                  thumbnail
-                  readTime
-                  dateUpdated
-                  tags
-                  credit {
-                    author {
-                      _id
-                      data {
-                        name
-                        profileImg
-                      }
-                    }
-                  }
-                }
-              }
-              creators {
-                _id
-                data {
-                  name
-                  profileImg
-                  coverImg
-                  posts {
-                    featuredPosts {
-                      title
-                      thumbnail
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `
+        query: this.staticDataService.trendingQuery.trending,
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.trending = data["getTrending"];

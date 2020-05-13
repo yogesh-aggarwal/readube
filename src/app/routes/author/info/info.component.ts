@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from "@angular/core";
 //& API
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
+import { StaticDataService } from "src/app/static.service";
 
 @Component({
   selector: "author-info",
@@ -16,44 +17,15 @@ export class InfoComponent implements OnInit {
 
   pubShow = 1;
 
-  constructor(private apollo: Apollo) {}
+  constructor(
+    private apollo: Apollo,
+    private staticDataService: StaticDataService
+  ) {}
 
   getUserProfile() {
     this.apollo
       .watchQuery({
-        query: gql`
-        {
-          getUser(args: { _id: "${this.id}" }) { 
-            _id
-            data {
-              name
-              bio
-              profileImg
-              coverImg
-              stats {
-                reach
-                appreciations
-              }
-              memberOf {
-                _id
-                name
-              }
-              followers {
-                _id
-              }
-              following {
-                _id
-              }
-              posts {
-                posts {
-                  _id
-                }
-              }
-              socialLinks
-            }
-          }
-        }
-      `,
+        query: this.staticDataService.authorQuery.info(this.id),
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.profile = data["getUser"];
