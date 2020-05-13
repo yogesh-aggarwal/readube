@@ -11,8 +11,8 @@ export interface Post {
   tags?: Array<string>;
   stats?: Array<string>;
   credit?: Array<string>;
-  datePublished?: Date | String;
-  dateUpdated?: Date | String;
+  datePublished?: number | Date | String;
+  dateUpdated?: number | Date | String;
 }
 
 export interface Collection {

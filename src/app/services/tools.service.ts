@@ -5,15 +5,17 @@ import { Injectable } from "@angular/core";
 })
 export class ToolsService {
   currentUser: any;
+  months: Array<string> = ["Jan", "Feb"];
+
   constructor() {
     this.getCurrentUserId();
   }
 
   getCardDate(timestamp) {
     let date = new Date(Number(timestamp));
-    return `${date.getUTCDate()} ${date.toLocaleString("default", {
+    return `${date.getDate()} ${date.toLocaleString("default", {
       month: "short",
-    })}, ${date.getUTCFullYear()}`;
+    })}, ${date.getFullYear()}`;
   }
 
   parsePosts(posts) {
@@ -21,6 +23,10 @@ export class ToolsService {
       post.dateUpdated = this.getCardDate(post.dateUpdated);
     });
     return posts;
+  }
+
+  getMonth(index) {
+    return this.months[index];
   }
 
   getCurrentUserId() {

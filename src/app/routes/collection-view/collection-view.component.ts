@@ -33,6 +33,13 @@ export class CollectionViewComponent extends ToolsService implements OnInit {
       });
   }
 
+  getDate(timestamp: any) {
+    let date = new Date(+timestamp);
+    return `${date.getDate()} ${date.toLocaleString("default", {
+      month: "short",
+    })}, ${date.getFullYear()}`;
+  }
+
   ngOnInit(): void {
     this.id = this.router.url.split("/")[2];
     this.getCollection();
