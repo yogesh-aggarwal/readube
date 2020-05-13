@@ -1,9 +1,5 @@
-<!-- TODO: Change background to author cover -->
-<div
-  class="container"
-  *ngIf="profile; else loading"
-  [ngStyle]="{ 'background-image': 'url(' + profile.data.coverImg + ')' }"
->
+<div class="container" *ngIf="profile; else loading">
+  <img id="coverImg" [src]="profile.data.coverImg" alt="" />
   <div class="profile">
     <div
       class="profileImg"
