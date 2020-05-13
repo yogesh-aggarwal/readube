@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 
-import gql from "graphql-tag";
+//& API
 import { Apollo } from "apollo-angular";
-import { ToolsService } from "../../tools.service";
-import { DataService } from "src/app/data.service";
-import { StaticDataService } from "src/app/static.service";
+import { ToolsService } from "../../services/tools.service";
+import { DataService } from "src/app/services/data.service";
+import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
   selector: "app-home",

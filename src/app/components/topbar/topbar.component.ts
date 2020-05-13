@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
-import { ToolsService } from "../../tools.service";
+import { ToolsService } from "../../services/tools.service";
 
 @Component({
   selector: "app-topbar",
   templateUrl: "./topbar.component.html",
-  styleUrls: ["./topbar.component.scss"]
+  styleUrls: ["./topbar.component.scss"],
 })
 export class TopbarComponent extends ToolsService implements OnInit {
   profile: any;
@@ -27,7 +26,7 @@ export class TopbarComponent extends ToolsService implements OnInit {
               }
             }
           }
-        `
+        `,
       })
       .valueChanges.subscribe(({ loading, data }) => {
         this.profile = data["getUser"];

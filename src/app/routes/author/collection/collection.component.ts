@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import { StaticDataService } from "src/app/static.service";
+import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
   selector: "author-collection",

@@ -28,6 +28,10 @@ export class ToolsService {
     return this.currentUser;
   }
 
+  isObjEmpty(obj: Object | object) {
+    return !Object.keys(obj);
+  }
+
   isLoggedinUser(uid) {
     return uid == this.getCurrentUserId();
   }

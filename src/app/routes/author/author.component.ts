@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ToolsService } from "../../tools.service";
+import { ToolsService } from "../../services/tools.service";
 
 @Component({
   selector: "app-author",

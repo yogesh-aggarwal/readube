@@ -1,1 +1,17 @@
-{{ collection.name }}
+<ng-container *ngIf="!isObjEmpty(collection); else Laoding">
+  <div class="container">
+    <div class="posts">
+      <author-card
+        [card]="post"
+        *ngFor="let post of collection.posts"
+      ></author-card>
+    </div>
+    <div class="info">
+      <div class="title">{{ collection.title }}</div>
+      <div class="description">{{ collection.description }}</div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #Laoding>
+  Loading...
+</ng-template>

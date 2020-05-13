@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
-import { StaticDataService } from "src/app/static.service";
+import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
   selector: "author-story",

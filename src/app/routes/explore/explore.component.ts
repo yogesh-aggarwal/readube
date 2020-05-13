@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import { ToolsService } from "../../tools.service";
-import { StaticDataService } from "src/app/static.service";
+import { ToolsService } from "../../services/tools.service";
+import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
   selector: "app-explore",

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ToolsService } from "src/app/tools.service";
+import { ToolsService } from "src/app/services/tools.service";
 
 @Component({
   selector: "author-card",

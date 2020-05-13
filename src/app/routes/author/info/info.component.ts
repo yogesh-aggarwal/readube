@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 //& API
-import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
-import { StaticDataService } from "src/app/static.service";
+import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
   selector: "author-info",
