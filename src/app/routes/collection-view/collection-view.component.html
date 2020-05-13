@@ -11,24 +11,26 @@
         class="thumbnail"
         [ngStyle]="{ 'background-image': 'url(' + collection.thumbnail + ')' }"
       ></div>
-      <div class="title">{{ collection.title }}</div>
-      <div class="description">{{ collection.description }}</div>
-      <div class="tags">
-        <tag
-          [tag]="tag"
-          *ngFor="let tag of collection.tags"
-          style="margin-right: 0.5rem;"
-        ></tag>
-      </div>
-      <div class="dates">
-        <div class="date">
-          Created on: {{ getDate(collection.dateCreated) }}
+      <div class="content">
+        <div class="title">{{ collection.title }}</div>
+        <div class="description">{{ collection.description }}</div>
+        <div class="tags">
+          <tag
+            [tag]="tag"
+            *ngFor="let tag of collection.tags"
+            style="margin-right: 0.5rem;"
+          ></tag>
         </div>
-        <div
-          class="date"
-          *ngIf="collection.dateCreated !== collection.dateUpdated"
-        >
-          Last Updated: {{ getDate(collection.dateUpdated) }}
+        <div class="dates">
+          <div class="date">
+            Created on: {{ getDate(collection.dateCreated) }}
+          </div>
+          <div
+            class="date"
+            *ngIf="collection.dateCreated !== collection.dateUpdated"
+          >
+            Last Updated: {{ getDate(collection.dateUpdated) }}
+          </div>
         </div>
       </div>
     </div>

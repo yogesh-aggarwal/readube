@@ -1,19 +1,30 @@
 @import "../../../scheme";
+@import "../../../vars";
 
 .container {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 
   .posts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 2rem;
+    padding-right: 23rem;
   }
 
   .info {
-    min-width: 20rem;
+    position: fixed;
+    top: $topbar-height;
+    right: 0rem;
+    width: 26rem;
+    height: 100vh;
+    padding: 1rem 2.5rem;
+    background: color(bar);
+    box-shadow: -2px 14px 16px #00000024;
+    z-index: 100;
 
     .thumbnail {
       width: 100%;
@@ -23,20 +34,22 @@
       margin-bottom: 0.8rem;
     }
 
-    .title {
-      font-size: 1.4rem;
-      color: color(heading);
-      text-align: center;
-    }
+    .content {
+      .title {
+        font-size: 1.4rem;
+        color: color(heading);
+        text-align: center;
+      }
 
-    .description {
-      margin-bottom: 1rem;
-    }
+      .description {
+        margin-bottom: 1rem;
+      }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 0.8rem;
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 0.8rem;
+      }
     }
   }
 }
