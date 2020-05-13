@@ -6,6 +6,7 @@ import { PublicationCardComponent } from "./global/publication-card/publication-
 import { TagComponent } from "./global/tag/tag.component";
 import { StoryCardComponent } from "./global/story-card/story-card.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,6 @@ import { NotificationsComponent } from "./notifications/notifications.component"
     StoryCardComponent,
     NotificationsComponent,
   ],
-  imports: [CommonModule],
+  imports: [RouterModule, CommonModule],
 })
 export class ComponentsModule {}

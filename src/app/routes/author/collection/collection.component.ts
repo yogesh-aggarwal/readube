@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
 import { StaticDataService } from "src/app/static.service";
 
 @Component({
@@ -26,6 +25,7 @@ export class CollectionComponent implements OnInit {
       .valueChanges.subscribe(({ loading, data }) => {
         this.collections = data["getUser"]["data"]["collections"];
         this.collections.forEach((collection: any) => {
+          collection.route = ["collection", collection.id];
           collection.readTime = `${collection.posts.length} posts`;
           delete collection.posts;
         });

@@ -17,6 +17,7 @@ import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthorModule } from "./routes/author/author.module";
 import { ComponentsModule } from "./components/components.module";
+import { CollectionViewComponent } from "./routes/collection-view/collection-view.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ComponentsModule } from "./components/components.module";
     HomeComponent,
     TrendingComponent,
     ExploreComponent,
+    CollectionViewComponent,
     //& Components
     TopbarComponent,
     SidebarComponent,
@@ -36,7 +38,7 @@ import { ComponentsModule } from "./components/components.module";
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    //& Modules,
+    //& Components,
     AuthorModule,
     ComponentsModule,
   ],
