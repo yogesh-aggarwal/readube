@@ -1,5 +1,6 @@
 <div class="container">
   <ng-container *ngIf="trending; else loading">
+    <!-- Popular Tags -->
     <div class="section">
       <div class="heading">Popular tags</div>
       <div class="tags">
@@ -15,19 +16,22 @@
         ></author-card>
       </div>
     </div>
+    <!-- Author on Rise -->
     <div class="section">
       <div class="heading">Author on rise</div>
       <div class="creator">
-        <div class="profile">
-          <div
+        <img
+          class="coverImg"
+          [src]="trending.creators[0].data.coverImg"
+          alt=""
+        />
+        <a [routerLink]="['/author', trending.creators[0]._id]" class="profile">
+          <img
             class="profileImg"
-            [ngStyle]="{
-              'background-image':
-                'url(' + trending.creators[0].data.profileImg + ')'
-            }"
-          ></div>
+            [src]="trending.creators[0].data.profileImg"
+          />
           <div class="name">{{ trending.creators[0].data.name }}</div>
-        </div>
+        </a>
         <div class="cards">
           <div
             class="card"
