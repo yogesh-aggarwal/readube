@@ -7,6 +7,7 @@ import { TagComponent } from "./global/tag/tag.component";
 import { StoryCardComponent } from "./global/story-card/story-card.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { RouterModule } from "@angular/router";
+import { CommunityPostCardComponent } from "./global/community-post-card/community-post-card.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RouterModule } from "@angular/router";
     TagComponent,
     StoryCardComponent,
     NotificationsComponent,
+    CommunityPostCardComponent,
   ],
   exports: [
     AuthorCardComponent,
@@ -24,6 +26,7 @@ import { RouterModule } from "@angular/router";
     TagComponent,
     StoryCardComponent,
     NotificationsComponent,
+    CommunityPostCardComponent,
   ],
   imports: [RouterModule, CommonModule],
 })

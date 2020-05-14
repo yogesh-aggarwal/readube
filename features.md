@@ -12,7 +12,6 @@
 # Pending
 
 |-- Post view
-|-- Collection view
 
 # To be developed later
 
