@@ -214,6 +214,10 @@ export class WriteComponent extends Keys implements OnInit {
 
       console.table(this.WriteBoxContent);
       this.parseContentData();
+
+      // FIXME: Improve the carret movement & wierd behaviour of text
+      document.execCommand("selectAll", true, null);
+      document.getSelection().collapseToEnd();
     });
   }
 
