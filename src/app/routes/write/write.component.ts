@@ -9,10 +9,7 @@ interface contentHtml {
 }
 
 class Data {
-  elements: Array<any> = [];
-  textChange: Subject<any> = new Subject();
-  writeBox: HTMLElement;
-  isCtrlKey: boolean = false;
+  /// Data
   ignoreKeys: Array<string> = [
     "Control",
     "Alt",
@@ -47,10 +44,15 @@ class Data {
     "PageDown",
   ];
 
+  /// Elements
+  writeBox: HTMLElement;
+
+  /// Special Formatting
   bold: boolean = false;
   itallic: boolean = false;
   underline: boolean = false;
 
+  /// Content
   WriteBoxContent: Array<contentHtml> = [
     {
       startDiv: true,
@@ -60,6 +62,10 @@ class Data {
     },
   ];
   lastDiv: contentHtml;
+
+  /// Content Handlers
+  textChange: Subject<any> = new Subject();
+  isCtrlKey: boolean = false;
 }
 
 class Tools extends Data {
@@ -214,6 +220,5 @@ export class WriteComponent extends Keys implements OnInit {
   ngOnInit(): void {
     this.writeBox = document.querySelector("#write");
     this.updateLastDiv();
-    console.log(this.lastDiv);
   }
 }
