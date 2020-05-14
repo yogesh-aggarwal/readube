@@ -28,28 +28,40 @@
 
       .profile {
         border-radius: inherit;
+        position: relative;
 
         .cover {
-          border-radius: inherit;
-          width: 100%;
-          height: 10rem;
           display: flex;
           align-items: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 9.5rem;
+          border-radius: inherit;
+          object-fit: cover;
+          filter: blur(5px);
+        }
+        .main {
+          display: flex;
           justify-content: center;
-          background-size: cover;
-          background-position: center;
-          
-          .main {
+          align-items: center;
+          position: absolute;
+          width: 100%;
+          height: 9.5rem;
+
+          img {
             width: 7.5rem;
             height: 7.5rem;
             border-radius: 5rem;
-            background-size: cover;
-            background-position: center;
+            object-fit: cover;
+            z-index: 10;
           }
         }
       }
 
       .name {
+        margin-top: 9.8rem;
         text-align: center;
         font-size: 20px;
         color: #2b2b2b;

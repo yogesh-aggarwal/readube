@@ -20,22 +20,15 @@
     <div class="cards" id="creators">
       <div class="author" *ngFor="let creator of explore.creators">
         <div class="profile">
-          <div
-            class="cover"
-            [ngStyle]="{
-              'background-image': 'url(' + creator.data.coverImg + ')'
-            }"
-          >
-            <div
-              class="main"
-              [ngStyle]="{
-                'background-image': 'url(' + creator.data.profileImg + ')'
-              }"
-            ></div>
+          <img [src]="creator.data.coverImg" alt="" class="cover" />
+          <div class="main">
+            <img [src]="creator.data.profileImg" alt="" />
           </div>
         </div>
         <div class="name">{{ creator.data.name }}</div>
-        <div class="followers">{{ creator.data.followers.length }} followers</div>
+        <div class="followers">
+          {{ creator.data.followers.length }} followers
+        </div>
       </div>
     </div>
   </div>
