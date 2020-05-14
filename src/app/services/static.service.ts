@@ -18,6 +18,7 @@ interface ExploreQuery {
 interface AuthorQuery {
   collections: Function;
   info: Function;
+  community: Function;
   user: Function;
   story: Function;
 }
@@ -27,7 +28,7 @@ interface CollectionQuery {
 }
 
 class Resolvers {
-  static collection(id: string) {
+  static collection(id: string): DocumentNode {
     return gql`
       query {
         getCollection(args: { _id: "${id}" }) {
@@ -142,6 +143,22 @@ class AuthorQueryResolver {
             stories {
               _id
               content
+            }
+          }
+        }
+      }
+    `;
+  }
+  static community(id: string): DocumentNode {
+    return gql`
+      {
+        getUser(args: { _id: "${id}" }) {
+          _id
+          data {
+            community {
+              _id
+              content
+              datePublished
             }
           }
         }
@@ -294,6 +311,7 @@ export class StaticDataService {
     info: AuthorQueryResolver.info,
     user: AuthorQueryResolver.user,
     story: AuthorQueryResolver.story,
+    community: AuthorQueryResolver.community,
   };
   collection: CollectionQuery = {
     collection: Resolvers.collection,

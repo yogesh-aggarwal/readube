@@ -1,1 +1,11 @@
-<p>community works!</p>
+<ng-container *ngIf="posts; else Loading">
+  <div class="posts">
+    <community-post-card
+      [post]="post"
+      *ngFor="let post of posts"
+    ></community-post-card>
+  </div>
+</ng-container>
+<ng-template #Loading>
+  Loading...
+</ng-template>

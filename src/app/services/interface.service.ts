@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 
+export interface User {}
+
 export interface Post {
   _id?: string;
   title?: string;
@@ -13,6 +15,13 @@ export interface Post {
   credit?: Array<string>;
   datePublished?: number | Date | String;
   dateUpdated?: number | Date | String;
+}
+
+export interface CommunityPost {
+  _id?: string;
+  content?: string;
+  owner?: User;
+  datePublished?: number | Date | String;
 }
 
 export interface Collection {
