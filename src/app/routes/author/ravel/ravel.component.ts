@@ -48,7 +48,7 @@ export class RavelComponent extends ToolsService implements OnInit {
       .watchQuery({
         query: this.staticDataService.authorQuery.user(this.id),
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.categories = data["getUser"]["data"]["posts"]["categories"];
       });
   }

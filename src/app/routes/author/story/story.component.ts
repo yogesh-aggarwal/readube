@@ -23,7 +23,7 @@ export class StoryComponent implements OnInit {
       .watchQuery({
         query: this.staticDataService.authorQuery.story(this.id),
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.stories = data["getUser"]["data"]["stories"];
       });
   }

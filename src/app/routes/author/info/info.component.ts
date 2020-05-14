@@ -26,7 +26,7 @@ export class InfoComponent implements OnInit {
       .watchQuery({
         query: this.staticDataService.authorQuery.info(this.id),
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.profile = data["getUser"];
         delete this.profile.data.stats.__typename;
       });

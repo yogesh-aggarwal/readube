@@ -28,7 +28,7 @@ export class HomeComponent extends ToolsService implements OnInit {
       .watchQuery({
         query: this.staticDataService.homeQuery.newRavels,
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.newRavels = data["getNewRavels"];
       });
   }
@@ -38,7 +38,7 @@ export class HomeComponent extends ToolsService implements OnInit {
       .watchQuery({
         query: this.staticDataService.homeQuery.userRecommendations,
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.userRecommendations = data["getUserRecommendations"];
       });
   }

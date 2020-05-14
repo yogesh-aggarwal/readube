@@ -23,7 +23,7 @@ export class ExploreComponent extends ToolsService implements OnInit {
       .watchQuery({
         query: this.staticDataService.exploreQuery.explore,
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.explore = data["getExplore"];
       });
   }

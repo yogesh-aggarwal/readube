@@ -22,7 +22,7 @@ export class CollectionComponent implements OnInit {
       .watchQuery({
         query: this.staticDataService.authorQuery.collections(this.id),
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.collections = data["getUser"]["data"]["collections"];
         this.collections.forEach((collection: any) => {
           collection.route = ["/collection", collection._id];

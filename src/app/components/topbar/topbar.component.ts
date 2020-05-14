@@ -28,7 +28,7 @@ export class TopbarComponent extends ToolsService implements OnInit {
           }
         `,
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.profile = data["getUser"];
       });
   }

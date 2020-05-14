@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import { ToolsService } from "../../services/tools.service";
-import { DataService } from "src/app/services/data.service";
 import { StaticDataService } from "src/app/services/static.service";
 
 @Component({
@@ -14,7 +13,6 @@ export class TrendingComponent extends ToolsService implements OnInit {
 
   constructor(
     private apollo: Apollo,
-    private dataService: DataService,
     private staticDataService: StaticDataService
   ) {
     super();
@@ -25,7 +23,7 @@ export class TrendingComponent extends ToolsService implements OnInit {
       .watchQuery({
         query: this.staticDataService.trendingQuery.trending,
       })
-      .valueChanges.subscribe(({ loading, data }) => {
+      .valueChanges.subscribe(({ data }) => {
         this.trending = data["getTrending"];
       });
   }
