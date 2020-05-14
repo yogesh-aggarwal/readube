@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800&display=swap");
 
 * {
-  font-family: "Baloo bhai";
+  font-family: "Roboto Slab";
   user-select: none;
   -webkit-user-drag: none;
   box-sizing: border-box;
+  font-weight: 500;
   transition: all 0.3s;
 }
 

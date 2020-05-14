@@ -57,7 +57,10 @@
             let i = index
           "
         >
-          <a [routerLink]="['/publication', member._id]">
+          <a
+            [routerLink]="['/publication', member._id]"
+            style="text-decoration: underline;"
+          >
             {{ member.name }}
           </a>
           <div class="comma" *ngIf="i < pubShow - 1">,</div>

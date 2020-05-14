@@ -2,10 +2,15 @@
 @import "../../../scheme";
 
 .container {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: color(bar);
   width: $sidebar-width;
   height: 100vh;
   box-shadow: 2px 3px 16px #00000024;
+  transition: height 0s; // Setting to 0 so that on window resize it do not feel bad
+  z-index: -1;
 
   .logo {
     width: 100%;
@@ -21,18 +26,11 @@
     .item {
       display: flex;
       align-items: center;
-      padding: 0.5rem 2rem;
+      padding: 0.6rem 2rem;
       border-radius: 0 25px 25px 0;
       color: #000;
       text-decoration: none;
       cursor: pointer;
-
-      &:hover {
-        background: rgb(231, 231, 231);
-      }
-      &.active {
-        background: #e3e3e3;
-      }
 
       .icon {
         display: flex;
@@ -40,7 +38,9 @@
       }
 
       .title {
+        font-weight: 700;
         font-size: 1.3rem;
+        margin-top: -3px;
       }
 
       &#home {
@@ -48,6 +48,13 @@
           margin-right: 10px;
           margin-left: 3px;
         }
+      }
+
+      &:hover {
+        background: rgb(231, 231, 231);
+      }
+      &.active {
+        background: #e3e3e3;
       }
     }
   }

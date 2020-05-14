@@ -2,13 +2,15 @@
   background: #e6e6e6;
   border-radius: 25px;
   display: inline-flex;
-  align-items: center;
-  padding: 2px 9px 0 0;
+  padding: 3px 10px 3px 3px;
   cursor: pointer;
 
   .icon {
     height: 24px;
     margin-right: 4px;
     padding: 0 1px 1px 4px;
+  }
+  .text {
+    font-weight: 700;
   }
 }

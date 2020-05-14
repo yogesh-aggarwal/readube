@@ -1,0 +1,10 @@
+.write-area {
+  border: 4px dashed teal;
+  height: 88vh;
+
+  #write {
+    height: 100%;
+    border: 5px groove #000;
+    outline: none;
+  }
+}

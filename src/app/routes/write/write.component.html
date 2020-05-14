@@ -1,1 +1,9 @@
-<p>write works!</p>
+<div class="toolbar"></div>
+
+<div class="write-area">
+  <div
+    id="write"
+    contenteditable="true"
+    (keypress)="textChange.next($event)"
+  ></div>
+</div>

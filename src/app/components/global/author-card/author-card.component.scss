@@ -27,7 +27,8 @@
     .title {
       color: color(card-title);
       font-size: 20px;
-      line-height: 1.5rem;
+      line-height: 1.2rem;
+      font-weight: 600;
       text-decoration: none;
       cursor: pointer;
     }
@@ -48,16 +49,18 @@
 
     .author {
       position: absolute;
-      bottom: -0.7rem;
+      bottom: -0.5rem;
       left: 15px;
       font-size: 15px;
+      font-weight: 800;
       color: color(primary-green);
       cursor: pointer;
     }
     .read-time {
       position: absolute;
-      bottom: -0.7rem;
+      bottom: -0.5rem;
       right: 15px;
+      font-weight: 600;
       font-size: 15px;
       color: color(card-read-time);
     }
