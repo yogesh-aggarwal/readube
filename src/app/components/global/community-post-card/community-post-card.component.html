@@ -1,1 +1,7 @@
-<p>community-post-card works!</p>
+<div class="card">
+  <div class="content">{{ post.content }}</div>
+  <div class="date">
+    <div>{{ getHoursMinutes(post.datePublished) }}</div>
+    <div>{{ getCardDate(post.datePublished, true) }}</div>
+  </div>
+</div>

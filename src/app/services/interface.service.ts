@@ -13,15 +13,15 @@ export interface Post {
   tags?: Array<string>;
   stats?: Array<string>;
   credit?: Array<string>;
-  datePublished?: number | Date | String;
-  dateUpdated?: number | Date | String;
+  datePublished?: number | Date | string;
+  dateUpdated?: number | Date | string;
 }
 
 export interface CommunityPost {
   _id?: string;
   content?: string;
   owner?: User;
-  datePublished?: number | Date | String;
+  datePublished?: number | Date | string;
 }
 
 export interface Collection {
@@ -31,8 +31,8 @@ export interface Collection {
   thumbnail?: string;
   tags?: Array<string>;
   posts?: Array<Post>;
-  dateCreated?: Date | String;
-  dateUpdated?: Date | String;
+  dateCreated?: Date | string;
+  dateUpdated?: Date | string;
 }
 
 @Injectable({

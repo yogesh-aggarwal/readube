@@ -11,8 +11,13 @@ export class ToolsService {
     this.getCurrentUserId();
   }
 
-  getCardDate(timestamp) {
-    let date = new Date(Number(timestamp));
+  getHoursMinutes(timestamp: string | number | Date): string {
+    const date = new Date(+timestamp);
+    return date.getHours() + ":" + date.getMinutes();
+  }
+
+  getCardDate(timestamp: number | string | Date, time = false): string {
+    let date = new Date(+timestamp);
     return `${date.getDate()} ${date.toLocaleString("default", {
       month: "short",
     })}, ${date.getFullYear()}`;

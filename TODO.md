@@ -1,1 +1,0 @@
-# Develop notifications component

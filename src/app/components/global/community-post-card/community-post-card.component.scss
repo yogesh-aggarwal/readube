@@ -1,0 +1,15 @@
+@import "../../../../scheme";
+
+.card {
+  width: 60rem;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px #ccc; // TODO: Change it from XD
+  border-radius: 12px;
+
+  .date {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: color(card-time);
+  }
+}

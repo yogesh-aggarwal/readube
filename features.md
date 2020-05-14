@@ -15,5 +15,4 @@
 
 # To be developed later
 
-|-- Author -> Community tab
 |-- Author -> Merchandise tab
