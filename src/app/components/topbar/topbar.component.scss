@@ -6,7 +6,27 @@
   width: 100%;
   height: $topbar-height;
   box-shadow: 12px 3px 16px #00000024;
+  display: flex;
   position: relative;
+  justify-content: flex-end;
+  align-items: center;
+
+  button {
+    height: 2.3rem;
+    width: 5rem;
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 2rem;
+    border-radius: 5rem;
+    background: rgba(0, 128, 128, 0.9);
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(0, 114, 114);
+    }
+  }
 
   .profile {
     position: absolute;
