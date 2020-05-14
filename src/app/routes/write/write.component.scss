@@ -4,7 +4,32 @@
 
   #write {
     height: 100%;
+    max-height: 100%;
     border: 5px groove #000;
     outline: none;
+    overflow-y: auto;
+
+    div {
+      color: rgb(29, 29, 29);
+      display: inline;
+    }
+
+    .bold {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .itallic {
+      color: #000;
+      font-style: italic;
+    }
+
+    .underline {
+      color: #000;
+      text-decoration: underline;
+    }
+    .new-line {
+      display: block;
+    }
   }
 }
