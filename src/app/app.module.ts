@@ -13,11 +13,12 @@ import { HomeComponent } from "./routes/home/home.component";
 import { TrendingComponent } from "./routes/trending/trending.component";
 import { ExploreComponent } from "./routes/explore/explore.component";
 //& GraphQL
-import { GraphQLModule } from "./graphql.module";
+import { GraphQLModule } from "./modules/graphql.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthorModule } from "./routes/author/author.module";
 import { ComponentsModule } from "./components/components.module";
 import { CollectionViewComponent } from "./routes/collection-view/collection-view.component";
+import { WriteComponent } from "./routes/write/write.component";
 
 @NgModule({
   declarations: [
@@ -27,15 +28,16 @@ import { CollectionViewComponent } from "./routes/collection-view/collection-vie
     TrendingComponent,
     ExploreComponent,
     CollectionViewComponent,
+    WriteComponent,
     //& Components
     TopbarComponent,
     SidebarComponent,
   ],
   imports: [
     //& Essential Modules
-    CommonModule,
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    CommonModule,
     GraphQLModule,
     HttpClientModule,
     //& Components,
