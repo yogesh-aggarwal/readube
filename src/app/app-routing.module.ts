@@ -5,12 +5,14 @@ import { TrendingComponent } from "./routes/trending/trending.component";
 import { ExploreComponent } from "./routes/explore/explore.component";
 import { AuthorComponent } from "./routes/author/author.component";
 import { CollectionViewComponent } from "./routes/collection-view/collection-view.component";
+import { WriteComponent } from "./routes/write/write.component";
 
 const routes: Routes = [
   // Main routes
   { path: "", component: HomeComponent },
   { path: "trending", component: TrendingComponent },
   { path: "explore", component: ExploreComponent },
+  { path: "write", component: WriteComponent },
   { path: "collection/:id", component: CollectionViewComponent },
   // Component routes
   {

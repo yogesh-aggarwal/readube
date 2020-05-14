@@ -1,5 +1,5 @@
 <div class="container" *ngIf="profile">
-  <button>Write</button>
+  <a [routerLink]="['/write']"><button>Write</button></a>
   <notifications style="height: 100%;"></notifications>
   <a [routerLink]="['/author', profile._id]"
     ><div
