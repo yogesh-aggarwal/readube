@@ -43,7 +43,11 @@ export class TopbarComponent extends ToolsService implements OnInit {
   }
 
   publish() {
-    this.dataService.publish.next({ publish: true });
+    this.dataService.article.next({
+      publishArticle: true,
+      haveContent: true,
+      working: true,
+    });
   }
 
   ngOnInit() {
@@ -54,8 +58,8 @@ export class TopbarComponent extends ToolsService implements OnInit {
     });
     this.getUserProfile();
 
-    this.dataService.publish.subscribe(({ publish }) => {
-      this.publishEnabled = publish;
+    this.dataService.article.subscribe(({ haveContent, working }) => {
+      this.publishEnabled = haveContent && !working;
     });
   }
 }

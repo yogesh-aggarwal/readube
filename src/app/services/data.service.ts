@@ -5,9 +5,13 @@ import { BehaviorSubject, ReplaySubject } from "rxjs";
   providedIn: "root",
 })
 export class DataService {
-  publish: ReplaySubject<any> = new ReplaySubject();
+  article: ReplaySubject<any> = new ReplaySubject();
 
   constructor() {
-    this.publish.next({ publish: false });
+    this.article.next({
+      publishArticle: false,
+      haveContent: false,
+      working: false,
+    });
   }
 }

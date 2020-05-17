@@ -24,8 +24,19 @@ const Table = require("@editorjs/table");
 export class WriteComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
+  publish() {
+    console.log("Publishing");
+    setTimeout(() => {
+      this.dataService.article.next({
+        working: false,
+        publishArticle: false,
+        haveContent: true,
+      });
+    }, 3000);
+  }
+
   ngOnInit(): void {
-    let editor = new EditorJs({
+    new EditorJs({
       hideToolbar: false,
       initialBlock: "header",
       tools: {
@@ -118,11 +129,16 @@ export class WriteComponent implements OnInit {
       // placeholder: "Heading",
       autofocus: true,
       onChange: (data) => {
-        this.dataService.publish.next({
-          publish: data.blocks.getBlocksCount() > 1 ? true : false,
+        this.dataService.article.next({
+          haveContent: data.blocks.getBlocksCount() > 1 ? true : false,
+          publishArticle: false,
+          working: false,
         });
       },
     });
-    // editor
+
+    this.dataService.article.subscribe(({ publishArticle }) => {
+      if (publishArticle) this.publish();
+    });
   }
 }
