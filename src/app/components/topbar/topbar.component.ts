@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import gql from "graphql-tag";
 import { Apollo } from "apollo-angular";
 import { ToolsService } from "../../services/tools.service";
+import { Router, NavigationEnd } from "@angular/router";
+import { DataService } from "src/app/services/data.service";
 
 @Component({
   selector: "app-topbar",
@@ -9,8 +11,15 @@ import { ToolsService } from "../../services/tools.service";
   styleUrls: ["./topbar.component.scss"],
 })
 export class TopbarComponent extends ToolsService implements OnInit {
+  currentRoute: string;
   profile: any;
-  constructor(private apollo: Apollo) {
+  publishEnabled: boolean = false;
+
+  constructor(
+    private apollo: Apollo,
+    private router: Router,
+    private dataService: DataService
+  ) {
     super();
   }
 
@@ -33,7 +42,20 @@ export class TopbarComponent extends ToolsService implements OnInit {
       });
   }
 
+  publish() {
+    this.dataService.publish.next({ publish: true });
+  }
+
   ngOnInit() {
+    this.router.events.subscribe((route) => {
+      if (route instanceof NavigationEnd) {
+        this.currentRoute = route.url.split("/")[1];
+      }
+    });
     this.getUserProfile();
+
+    this.dataService.publish.subscribe(({ publish }) => {
+      this.publishEnabled = publish;
+    });
   }
 }

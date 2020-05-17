@@ -1,6 +1,20 @@
 <div class="container" *ngIf="profile">
-  <a [routerLink]="['/write']"><button>Write</button></a>
+  <!-- Button -->
+  <a [routerLink]="['/write']" *ngIf="currentRoute !== 'write'">
+    <button>Write</button>
+  </a>
+  <button
+    [disabled]="!publishEnabled"
+    (click)="publish()"
+    [ngClass]="{ disabled: !publishEnabled }"
+    *ngIf="currentRoute === 'write'"
+  >
+    Publish
+  </button>
+
+  <!-- Notifications -->
   <notifications style="height: 100%;"></notifications>
+  <!-- Profile -->
   <a [routerLink]="['/author', profile._id]"
     ><div
       class="profile"

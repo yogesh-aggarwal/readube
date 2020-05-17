@@ -23,7 +23,7 @@
         <img
           class="coverImg"
           [src]="trending.creators[0].data.coverImg"
-          alt=""
+          oncontextmenu="return false"
         />
         <a [routerLink]="['/author', trending.creators[0]._id]" class="profile">
           <img
