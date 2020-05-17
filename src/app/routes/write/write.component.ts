@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import EditorJs from "@editorjs/editorjs";
 import { DataService } from "src/app/services/data.service";
+
+/// Editor tools
 const Header = require("@editorjs/header");
 const Paragraph = require("@editorjs/paragraph");
-import ImageTool from "@editorjs/image";
+const ImageTool = require("@editorjs/image");
 const Embed = require("@editorjs/embed");
 const Quote = require("@editorjs/quote");
 const Marker = require("@editorjs/marker");
@@ -22,10 +24,12 @@ const Table = require("@editorjs/table");
   styleUrls: ["./write.component.scss"],
 })
 export class WriteComponent implements OnInit {
+  editor: EditorJs;
+
   constructor(private dataService: DataService) {}
 
   publish() {
-    console.log("Publishing");
+    console.log(this.editor.save());
     setTimeout(() => {
       this.dataService.article.next({
         working: false,
@@ -36,7 +40,7 @@ export class WriteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    new EditorJs({
+    this.editor = new EditorJs({
       hideToolbar: false,
       initialBlock: "header",
       tools: {
